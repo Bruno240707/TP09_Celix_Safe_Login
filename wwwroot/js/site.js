@@ -1,4 +1,14 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿function validarContraseña(password) {
 
-// Write your JavaScript code.
+    const minLargo = password.length >= 8;
+    const tieneMayuscula = /[A-Z]/.test(password);
+    const tieneEspecial = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+    let esValida = false;
+    if (minLargo == true && tieneMayuscula == true && tieneEspecial == true) {
+        esValida = true;
+    }
+
+    return esValida;
+
+}
