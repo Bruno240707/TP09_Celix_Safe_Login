@@ -1,4 +1,4 @@
-public class Usuario 
+public class Usuario
 {
     public string Username {get; set;}
     public string Contraseña {get;set;}
@@ -6,5 +6,8 @@ public class Usuario
     public string Apellido {get;set;}
     public string Email {get; set;}
     public int idUsuario {get;set;}
-    
+
+    public Usuario(){
+    }
+
 }
