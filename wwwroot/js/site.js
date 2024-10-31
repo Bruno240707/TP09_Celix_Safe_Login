@@ -11,3 +11,13 @@
 
     return esValida;
 }
+
+function sonIguales(password, repetirPassword)
+{
+    let sonIguales = false;
+    if (password == repetirPassword) 
+    {
+        sonIguales = true;
+    }
+    return sonIguales;
+}

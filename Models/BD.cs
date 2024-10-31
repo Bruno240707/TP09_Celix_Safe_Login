@@ -19,9 +19,17 @@ public class BD
     {
         using (SqlConnection conn = new SqlConnection(_ConnectionString))
         {
-            string sql = "IF EXIST (SELECT 1 FROM Usuario WHERE username = @username AND contraseña = @contraseña)";
+            string sql = "IF EXIST (SELECT 1 FROM Usuario WHERE username = @username AND contraseña = @Contraseña)";
             int count = conn.QuerySingleOrDefault<int>(sql, new { username, contraseña });
             return count > 0;
+        }
+    }
+
+    public static void agregarUsuario(Usuario user)
+    {
+        string sql = "INSERT INTO Usuario(username, contraseña, nombre, apellido, email) VALUES (@Username, @Contraseña, @Nombre, @Apellido, @Email)";
+        using(SqlConnection conn = new SqlConnection(_ConnectionString)) {
+            conn.Execute(sql, new {Username = user.username, Contraseña = user.contraseña, Nombre = user.nombre, Apellido = user.apellido, Email = user.email});
         }
     }
 

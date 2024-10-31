@@ -41,4 +41,15 @@ public class HomeController : Controller
         {
             return View();
         }
+
+        public IActionResult Registro(string username, string contraseña, string confirmarContra)
+        {
+            if (username == null || contraseña == null)
+            {
+                return View();
+            }
+
+            
+
+        }
 }
