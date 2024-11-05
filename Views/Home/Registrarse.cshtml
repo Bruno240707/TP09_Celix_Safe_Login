@@ -1,0 +1,69 @@
+@{
+    ViewData["Title"] = "Registrarse";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <script src="site.js"></script>
+
+</head>
+<body>
+
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="col-md-4">
+        <h3 class="text-center">Registrarse</h3>
+
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert alert-danger">@ViewBag.Error</div>
+        }
+
+        <form action='@Url.Action("Registro", "Home")' method="post" id="registroForm">
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingresa tu nombre" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="apellido">Apellido</label>
+                <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Ingresa tu apellido" required>
+            </div>
+
+            <div class="form-group">
+                <label for="username">Nombre de Usuario</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Elige un nombre de usuario" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Correo Electrónico</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Ingresa tu correo" required>
+            </div>
+
+            <div class="form-group">
+                <label for="contraseña">Contraseña</label>
+                <input type="password" class="form-control" id="contraseña" name="contraseña" placeholder="Elige una contraseña" required>
+                <div id="mensajeError" style="color: red; font-size: 0.9em;"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmarContraseña">Confirmar Contraseña</label>
+                <input type="password" class="form-control" id="confirmarContra" name="confirmarContra" placeholder="Repite la contraseña" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Registrarse</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.getElementById("contraseña").addEventListener("input", function() {
+        validarContraseña(this.value);
+    });
+</script>
+
+</body>
+</html>

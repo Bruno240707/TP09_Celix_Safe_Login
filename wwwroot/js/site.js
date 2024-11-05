@@ -1,23 +1,22 @@
 ﻿function validarContraseña(password) {
-
     const minLargo = password.length >= 8;
     const tieneMayuscula = /[A-Z]/.test(password);
     const tieneEspecial = /[!@#$%^&*(),.?":{}|<>]/.test(password);
 
-    let esValida = false;
-    if (minLargo == true && tieneMayuscula == true && tieneEspecial == true) {
-        esValida = true;
-    }
+    let esValida = minLargo && tieneMayuscula && tieneEspecial;
+    
+    const mensajeError = document.getElementById("mensajeError");
 
+    if (esValida) {
+        mensajeError.textContent = "";
+    } else {
+        mensajeError.textContent = "La contraseña debe tener al menos 8 caracteres, una mayúscula y un carácter especial.";
+    }
     return esValida;
 }
 
-function sonIguales(password, repetirPassword)
-{
-    let sonIguales = false;
-    if (password == repetirPassword) 
-    {
-        sonIguales = true;
-    }
-    return sonIguales;
-}
+// Evento para validar en tiempo real
+document.getElementById("contraseña").addEventListener("input", function() {
+    validarContraseña(this.value);
+});
+

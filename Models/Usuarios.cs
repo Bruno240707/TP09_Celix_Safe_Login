@@ -1,4 +1,4 @@
-public class Usuario
+public class Usuarios
 {
     public string username {get; set;}
     public string contraseña {get;set;}
@@ -7,7 +7,7 @@ public class Usuario
     public string email {get; set;}
     public int idUsuario {get;set;}
 
-    public Usuario(){
+    public Usuarios(){
     }
 
 }

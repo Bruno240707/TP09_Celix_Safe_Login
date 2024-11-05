@@ -6,30 +6,49 @@ public class BD
 {
     private static string _ConnectionString = "Server=localhost;DataBase=TP09_Celix_Safe_Login;Trusted_Connection=true;";
 
-    public static Usuario verInfoUsuario(int idUsuario) 
+    public static Usuarios verInfoUsuario(string email) 
     {
         using (SqlConnection conn = new SqlConnection(_ConnectionString))
         {
-            string sql = "SELECT * FROM Usuario WHERE idUsuario = @idUsuario";
-            return conn.QuerySingleOrDefault<Usuario>(sql, new { idUsuario });
+            string sql = "SELECT * FROM Usuarios WHERE email = @email";
+            return conn.QuerySingleOrDefault<Usuarios>(sql, new { email });
         }
     }
 
-    public static bool existeUsuario(string username, string contraseña) 
+    public static bool existeUsuarioLogin(string email, string contraseña) 
     {
         using (SqlConnection conn = new SqlConnection(_ConnectionString))
         {
-            string sql = "IF EXIST (SELECT 1 FROM Usuario WHERE username = @username AND contraseña = @Contraseña)";
-            int count = conn.QuerySingleOrDefault<int>(sql, new { username, contraseña });
+            string sql = "SELECT (1) FROM Usuarios WHERE email = @email AND contraseña = @Contraseña";
+            int count = conn.QuerySingleOrDefault<int>(sql, new { email, contraseña });
             return count > 0;
         }
     }
 
-    public static void agregarUsuario(Usuario user)
+        public static bool existeUsuarioRegistro(string email) 
     {
-        string sql = "INSERT INTO Usuario(username, contraseña, nombre, apellido, email) VALUES (@Username, @Contraseña, @Nombre, @Apellido, @Email)";
+        using (SqlConnection conn = new SqlConnection(_ConnectionString))
+        {
+            string sql = "SELECT (1) FROM Usuarios WHERE email = @email";
+            int count = conn.QuerySingleOrDefault<int>(sql, new { email });
+            return count > 0;
+        }
+    }
+
+    public static void agregarUsuario(Usuarios user)
+    {
+        string sql = "INSERT INTO Usuarios(username, contraseña, nombre, apellido, email) VALUES (@username, @contraseña, @nombre, @apellido, @email)";
         using(SqlConnection conn = new SqlConnection(_ConnectionString)) {
             conn.Execute(sql, new {Username = user.username, Contraseña = user.contraseña, Nombre = user.nombre, Apellido = user.apellido, Email = user.email});
+        }
+    }
+
+    public static void cambiarContra(string email, string contraseña)
+    {
+        using (SqlConnection conn = new SqlConnection(_ConnectionString))
+        {
+            string sql = "UPDATE Usuarios SET contraseña = @contraseña WHERE email = @email";
+            conn.Execute(sql, new { email, contraseña });
         }
     }
 
