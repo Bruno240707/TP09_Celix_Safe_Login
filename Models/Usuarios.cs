@@ -6,7 +6,7 @@ public class Usuarios
     public string apellido {get;set;}
     public string email {get; set;}
     public int idUsuario {get;set;}
-
+    public string nombrePerro {get;set;}
     public Usuarios(){
     }
 

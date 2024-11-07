@@ -79,25 +79,28 @@ public class HomeController : Controller
             return View();
         }
 
-        public IActionResult cambiarContra(string email, string contraseña, string confirmarContra)
+        public IActionResult cambiarContra(string email, string nuevaContraseña, string nombrePerro)
         {
-            bool contraseñaValida = ValidarContraseña(contraseña);
-            if (!contraseñaValida)
-            {
-                return View("cambiarContra");
-            }
 
-            if (contraseña != confirmarContra)
-            {
-                return View("Registrarse");
-            }
+            string nombrePerroAlmacenado = BD.obtenerNombrePerro(email);
 
             if (!BD.existeUsuarioRegistro(email))
             {
+                return View("Olvide");
+            }
+
+            bool contraseñaValida = ValidarContraseña(nuevaContraseña);
+            if (!contraseñaValida)
+            {
                 return View("Registrarse");
             }
 
-            BD.cambiarContra(email, contraseña);
+            if (nombrePerro != nombrePerroAlmacenado)
+            {
+                return View("Olvide");
+            }
+
+            BD.cambiarContra(email, nuevaContraseña, nombrePerro);
 
             return RedirectToAction("Login");
         }

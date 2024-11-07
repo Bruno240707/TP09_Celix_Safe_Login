@@ -37,18 +37,29 @@ public class BD
 
     public static void agregarUsuario(Usuarios user)
     {
-        string sql = "INSERT INTO Usuarios(username, contraseña, nombre, apellido, email) VALUES (@username, @contraseña, @nombre, @apellido, @email)";
+        string sql = "INSERT INTO Usuarios(username, contraseña, nombre, apellido, email, nombrePerro) VALUES (@username, @contraseña, @nombre, @apellido, @email, @nombrePerro)";
         using(SqlConnection conn = new SqlConnection(_ConnectionString)) {
-            conn.Execute(sql, new {Username = user.username, Contraseña = user.contraseña, Nombre = user.nombre, Apellido = user.apellido, Email = user.email});
+            conn.Execute(sql, new {Username = user.username, Contraseña = user.contraseña, Nombre = user.nombre, Apellido = user.apellido, Email = user.email, NombrePerro = user.nombrePerro});
         }
     }
 
-    public static void cambiarContra(string email, string contraseña)
+    public static void cambiarContra(string email, string nuevaContraseña, string nombrePerro)
     {
         using (SqlConnection conn = new SqlConnection(_ConnectionString))
         {
-            string sql = "UPDATE Usuarios SET contraseña = @contraseña WHERE email = @email";
-            conn.Execute(sql, new { email, contraseña });
+            string sql = "UPDATE Usuarios SET contraseña = @nuevaContraseña WHERE email = @email AND nombrePerro = @nombrePerro";
+            conn.Execute(sql, new { email, nuevaContraseña, nombrePerro }); 
+        }
+    }
+
+    public static string obtenerNombrePerro(string email)
+    {
+        using (SqlConnection conn = new SqlConnection(_ConnectionString))
+        {
+            string sql = "SELECT nombrePerro FROM Usuarios WHERE email = @email";
+            string result = conn.QuerySingleOrDefault<string>(sql, new { email = email });
+        
+            return result;
         }
     }
 
