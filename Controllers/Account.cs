@@ -87,7 +87,6 @@ public class HomeController : Controller
                 return View("cambiarContra");
             }
 
-            
             if (contraseña != confirmarContra)
             {
                 return View("Registrarse");
