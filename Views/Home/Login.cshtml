@@ -9,8 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="site.js"></script>
+    <link rel="stylesheet" href="estilo.css">
 </head>
-<body>
+<body class="Login">
 
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="col-md-4">
@@ -27,12 +28,13 @@
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
             </form>
+
+                <a class="nav-link active" aria-current="page" href='@Url.Action("Registrarse","Home")'> No tienes cuenta? Registrate </a>
+                <a class="nav-link active" aria-current="page" href='@Url.Action("Olvide","Home")'> Olvide mi contraseña </a>
         </div>
     </div>
 
-<a class="nav-link active" aria-current="page" href='@Url.Action("Registrarse","Home")'> No tienes cuenta? Registrate </a>
 
-<a class="nav-link active" aria-current="page" href='@Url.Action("Olvide","Home")'> Olvide mi contraseña </a>
 
 </body>
 </html>

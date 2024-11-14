@@ -9,15 +9,375 @@ html {
   }
 }
 
-body {
-  margin: 10px;
-  padding: 10px;
+/* Estilos generales */
+
+/*HOME */
+body.HOME {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
 }
 
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffebcd;
+  padding: 15;
+}
+
+nav a {
+  color: #333;
+  text-decoration: none;
+  margin: 0 8em;
+  padding: 5px 0; 
+  font-size: 1.1em; 
+  display: inline-block; 
+  line-height: 1.2; 
+}
+
+
+.logo {
+  font-weight: bold;
+  font-size: 1.5em;
+  color: #333;
+  text-decoration: none;
+  margin: 0 1em;
+}
+
+.user{
+  width: 80px;
+  height: 80px;
+}
+
+.header-image img {
+  width: 100%;
+  height: auto;
+}
+
+.intro {
+  text-align: center;
+  margin: 2em 0;
+}
+
+.categorias {
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+}
+
+.categoria img {
+  width: 150px;
+  height: 150px;
+}
+
+.comunidad {
+  text-align: center;
+  background-color: #ffcc80;
+  padding: 2em;
+  margin: 2em 0;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.5em 1em;
+  background-color: #ff6f00;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.Recetas-popu {
+  text-align: center;
+  margin: 2em 0;
+}
+
+.Recetas-Carrousel {
+  display: flex;
+  overflow-x: auto;
+  gap: 1em;
+  padding: 1em;
+}
+
+.Recetas {
+  background-color: white;
+  border-radius: 5px;
+  padding: 1em;
+  min-width: 150px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.Recetas img {
+  width: 100%;
+  border-radius: 5px;
+}
 
 footer {
-  margin-top: 10px;
-  padding: 10px;
-  background-color: #f8f9fa;
-  border-top: 1px solid #e9ecef;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 1em 0;
 }
+
+footer nav a {
+  color: #ffebcd;
+  margin: 0 0.5em;
+  text-decoration: none;
+}
+
+/*HOME */
+
+/*Login */
+
+/* Estilo general */
+.Login {
+  background-color: #ffebcd; /* Fondo de la página */
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Contenedor del formulario */
+.container {
+  width: 100%;
+  max-width: 400px;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Encabezado */
+h3.text-center {
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* Etiquetas */
+.form-group label {
+  margin-bottom: 5px;
+  font-size: 14px;
+  display: block;
+  text-align: left;
+}
+
+/* Campos de entrada */
+.form-control {
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 14px;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+/* Botón de inicio de sesión */
+.btn-primary {
+  background-color: #ff004f;
+  border: none;
+  border-radius: 20px;
+  padding: 10px;
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.btn-primary:hover {
+  background-color: #e60047;
+}
+
+/* Estilo de los enlaces */
+a.nav-link {
+  text-decoration: none;
+  color: #007bff;
+  font-size: 14px;
+  margin-top: 10px;
+  display: block;
+}
+
+/* Posición de los enlaces dentro del contenedor */
+.container a {
+  margin-top: 15px;
+}
+
+a.nav-link:hover {
+  text-decoration: underline;
+}
+
+
+/*Login */
+
+
+/*Registrarse */
+
+.Register {
+  background-color: #ffebcd; /* Fondo de la página */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  max-width: 400px;
+  width: 100%;
+  position: relative; /* Para mantener todo adentro */
+}
+
+h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.btn-primary {
+  background-color: #ff0055;
+  border: none;
+  border-radius: 50px;
+  width: 100%;
+  font-weight: bold;
+}
+
+.btn-primary:hover {
+  background-color: #e6004c;
+}
+
+.form-group label {
+  margin-top: 10px;
+}
+
+#mensajeError {
+  margin-top: 5px;
+}
+
+a.nav-link {
+  display: block;
+  text-align: center;
+  color: #007bff;
+  margin-top: 15px;
+  text-decoration: none;
+}
+
+a.nav-link:hover {
+  text-decoration: underline;
+}
+
+
+/*Registrarse */
+
+/*Olvide contrraseña*/
+/* Estilo general para la página de Olvidé la contraseña */
+body.olvide-password {
+  background-color: #fbe8a6;  /* Fondo beige claro, similar al fondo de login */
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;  /* Asegura que el body ocupe todo el alto de la ventana */
+  display: flex;   /* Activamos Flexbox para centrar el contenido */
+  justify-content: center;  /* Centra horizontalmente */
+  align-items: center;      /* Centra verticalmente */
+}
+
+/* Estilo para el formulario */
+.olvide-password .olvide-form {
+  background-color: #ffffff;  /* Fondo blanco para el formulario */
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;  /* Máxima anchura */
+  box-sizing: border-box;  /* Asegura que el padding no afecte el ancho */
+}
+
+/* Título del formulario */
+.olvide-password h3 {
+  font-size: 24px;
+  color: #333;  /* Gris oscuro */
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Estilo de los formularios y etiquetas */
+.olvide-password .form-group {
+  margin-bottom: 15px;
+}
+
+.olvide-password label {
+  font-size: 14px;
+  color: #555;  /* Gris medio */
+  font-weight: 600;
+}
+
+.olvide-password input.form-control {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ced4da;  /* Gris claro para el borde */
+  border-radius: 4px;
+  font-size: 14px;
+  color: #495057;  /* Gris oscuro para el texto */
+}
+
+.olvide-password input.form-control:focus {
+  border-color: #f08a5d;  /* Naranja cuando se enfoca */
+  box-shadow: 0 0 5px rgba(240, 138, 93, 0.5);
+}
+
+/* Estilo para el mensaje de error */
+.olvide-password #mensajeError {
+  font-size: 0.9em;
+  color: red;
+  margin-top: 5px;
+}
+
+/* Estilo del botón */
+.olvide-password button.btn-primary {
+  background-color: #f08a5d;  /* Naranja/rojo para el fondo del botón */
+  border-color: #f08a5d;  /* Naranja/rojo para el borde */
+  color: white;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 4px;
+  width: 100%;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.olvide-password button.btn-primary:hover {
+  background-color: #d76f3e;  /* Rojo más oscuro al hacer hover */
+}
+
+/* Estilo para el enlace de volver */
+.olvide-password .text-center.mt-3 {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.olvide-password .text-center.mt-3 a {
+  color: #f08a5d;  /* Naranja/rojo para el enlace */
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.olvide-password .text-center.mt-3 a:hover {
+  text-decoration: underline;
+}
+
+
+/*Olvide contrraseña*/

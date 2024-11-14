@@ -2,10 +2,89 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celix-Safe - Home</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body class="HOME">
+    <header>
+        <div class="navbar">
+            <a href="#" class="logo">Celix-Safe</a>
+            <nav>
+                <a href="#">Foro</a>
+                <a href="#">Recetas</a>
+                <a href="#">Productos</a>
+                <a href="#">Establecimientos</a>
+               
+            </nav>  
+            <a href='@Url.Action("Login","Home")' ><img class="user" src="Imagen/Lgoin.png" alt="User"></a>
+        </div>
+        <div class="header-image">
+            <img src="Imagen/Banner.png" alt="Banner">
+        </div>
+    </header>
 
-    <h1 class="display-4">BIENVENIDOS A LOS CELIX SAFE</h1>
+    <main>
+        <section class="intro">
+            <h1>CELIX-SAFE</h1>
+            <div class="categorias">
+                <div class="categoria">
+                    <img src="Imagen/Rectas.png" alt="Recetas">
+                    <p>Recetas</p>
+                </div>
+                <div class="categoria">
+                    <img src="Imagen/Productos.png" alt="Productos">
+                    <p>Productos</p>
+                </div>
+                <div class="categoria">
+                    <img src="Imagen/Establecimientos.png" alt="Establecimientos">
+                    <p>Establecimientos</p>
+                </div>
+            </div>
+        </section>
 
-    <a class="nav-link active" aria-current="page" href='@Url.Action("Login","Home")'> Login</a>
+        <section class="comunidad">
+            <img src="Imagen/Comunidad.png" alt="Comunidad">
+            <p>Unite a la comunidad y empezá a chatear</p>
+            <a href="#" class="button">Foro</a>
+        </section>
 
-</div>
+        <section class="Recetas-popu">
+            <h2>Las recetas más conocidas por todos</h2>
+            <div class="Recetas-Carrousel">
+                <div class="Recetas">
+                    <img src="Imagen/Portada-1024x536.jpg" alt="Recipe 1">
+                    <p>Básico</p>
+                    <p>20 min</p>
+                </div>
+                <div class="Recetas">
+                    <img src="Imagen/cb56ce5731179a47210aa9ef7d38d1f7.jpg" alt="Recipe 2">
+                    <p>Básico</p>
+                    <p>20 min</p>
+                </div>
+                <div class="Recetas">
+                    <img src="Imagen/r.jpg" alt="Recipe 3">
+                    <p>Básico</p>
+                    <p>20 min</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>©2024, Celix-Safe. Marca registrada por Milo Landivar.</p>
+        <nav>
+            <a href="#">Quejas y reclamos</a>
+            <a href="#">Términos y condiciones</a>
+            <a href="#">Privacidad</a>
+            <a href="#">Top recetas</a>
+            <a href="#">Top establecimientos</a>
+            <a href="#">Top productos</a>
+        </nav>
+    </footer>
+</body>
+</html>
