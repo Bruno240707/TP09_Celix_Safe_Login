@@ -4,7 +4,7 @@ using Dapper;
 namespace TP09_Login_Marasi_Cordero.Models;
 public class BD 
 {
-    private static string _ConnectionString = "Server=localhost;DataBase=TP09_Celix_Safe_Login;Trusted_Connection=true;";
+    private static string _ConnectionString = "Server=localhost;DataBase=EFSI_database;Trusted_Connection=true;";
 
     public static Usuarios verInfoUsuario(string email) 
     {

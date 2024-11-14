@@ -2,10 +2,6 @@
     ViewData["Title"] = "Post Login";
 }
 
-<h3 class="text-center">HAS INICIADO SESION</h3>
-
-<h5 class="card-title">@ViewBag.usuario.nombre</h5>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -17,7 +13,7 @@
 <body class="HOME">
     <header>
         <div class="navbar">
-            <a href="#" class="logo">Celix-Safe</a>
+            <a href='@Url.Action("PostLogin","Home")'  class="logo">Celix-Safe</a>
             <nav>
                 <a href="#">Foro</a>
                 <a href="#">Recetas</a>
@@ -25,10 +21,10 @@
                 <a href="#">Establecimientos</a>
                
             </nav>  
-            <a href='@Url.Action("Login","Home")' ><img class="user" src="Imagen/User.png" alt="User"></a>
+            <a href='@Url.Action("Perfil","Home")' > <img class="user" src="/Imagen/User.png" alt="User"></a>
         </div>
         <div class="header-image">
-            <img src="Imagen/Banner.png" alt="Banner">
+            <img src="/Imagen/Banner.png" alt="Banner">
         </div>
     </header>
 
@@ -37,22 +33,22 @@
             <h1>CELIX-SAFE</h1>
             <div class="categorias">
                 <div class="categoria">
-                    <img src="Imagen/Rectas.png" alt="Recetas">
+                    <img src="/Imagen/Rectas.png" alt="Recetas">
                     <p>Recetas</p>
                 </div>
                 <div class="categoria">
-                    <img src="Imagen/Productos.png" alt="Productos">
+                    <img src="/Imagen/Productos.png" alt="Productos">
                     <p>Productos</p>
                 </div>
                 <div class="categoria">
-                    <img src="Imagen/Establecimientos.png" alt="Establecimientos">
+                    <img src="/Imagen/Establecimientos.png" alt="Establecimientos">
                     <p>Establecimientos</p>
                 </div>
             </div>
         </section>
 
         <section class="comunidad">
-            <img src="Imagen/Comunidad.png" alt="Comunidad">
+            <img src="/Imagen/Comunidad.png" alt="Comunidad">
             <p>Unite a la comunidad y empezá a chatear</p>
             <a href="#" class="button">Foro</a>
         </section>
@@ -61,17 +57,17 @@
             <h2>Las recetas más conocidas por todos</h2>
             <div class="Recetas-Carrousel">
                 <div class="Recetas">
-                    <img src="Imagen/Portada-1024x536.jpg" alt="Recipe 1">
+                    <img src="/Imagen/Portada-1024x536.jpg" alt="Recipe 1">
                     <p>Básico</p>
                     <p>20 min</p>
                 </div>
                 <div class="Recetas">
-                    <img src="Imagen/cb56ce5731179a47210aa9ef7d38d1f7.jpg" alt="Recipe 2">
+                    <img src="/Imagen/cb56ce5731179a47210aa9ef7d38d1f7.jpg" alt="Recipe 2">
                     <p>Básico</p>
                     <p>20 min</p>
                 </div>
                 <div class="Recetas">
-                    <img src="Imagen/r.jpg" alt="Recipe 3">
+                    <img src="I/magen/r.jpg" alt="Recipe 3">
                     <p>Básico</p>
                     <p>20 min</p>
                 </div>

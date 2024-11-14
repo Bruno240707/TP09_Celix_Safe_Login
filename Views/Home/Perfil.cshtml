@@ -1,0 +1,26 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celix-Safe - Home</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body class="HOME">
+    <header>
+        <div class="navbar">
+            <a href='@Url.Action("PostLogin","Home")' class="logo">Celix-Safe</a>
+            <nav>
+                <a href="#">Foro</a>
+                <a href="#">Recetas</a>
+                <a href="#">Productos</a>
+                <a href="#">Establecimientos</a>
+
+            </nav>  
+           <img class="user" src="/Imagen/User.png" alt="User">
+    </header>
+</body>

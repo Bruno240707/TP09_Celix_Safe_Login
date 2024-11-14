@@ -17,6 +17,7 @@ public class HomeController : Controller
         {
             return View();
         }
+        
         public IActionResult Login()
         {
             return View();
@@ -103,6 +104,11 @@ public class HomeController : Controller
             BD.cambiarContra(email, nuevaContraseña, nombrePerro);
 
             return RedirectToAction("Login");
+        }
+
+        public IActionResult Perfil()
+        {
+            return View();
         }
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------
