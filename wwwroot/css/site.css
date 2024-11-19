@@ -27,6 +27,17 @@ body.HOME {
   padding: 15;
 }
 
+.username {
+  font-weight: bold;
+  font-size: 1.2em; /* Aumentado de 0.8em a 1.2em */
+  color: #333;
+  text-decoration: none;
+  margin: 0 1em;
+  text-align: center;
+  display: inline-block;
+  width: auto;
+}
+
 nav a {
   color: #333;
   text-decoration: none;

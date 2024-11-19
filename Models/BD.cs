@@ -15,6 +15,15 @@ public class BD
         }
     }
 
+    public static Usuarios verInfoUsuarioActivo(int idUsuario) 
+    {
+        using (SqlConnection conn = new SqlConnection(_ConnectionString))
+        {
+            string sql = "SELECT * FROM Usuarios WHERE idUsuario = @idUsuario";
+            return conn.QuerySingleOrDefault<Usuarios>(sql, new { idUsuario });
+        }
+    }
+
     public static bool existeUsuarioLogin(string email, string contraseña) 
     {
         using (SqlConnection conn = new SqlConnection(_ConnectionString))

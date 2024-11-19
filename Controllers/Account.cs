@@ -36,10 +36,16 @@ public class HomeController : Controller
             {
                 Usuarios usuarioIngreso = BD.verInfoUsuario(email);
                 ViewBag.usuario = usuarioIngreso;
-                return View("PostLogin");
+                return RedirectToAction("PostLogin", new { id = usuarioIngreso.idUsuario });
             }
 
             return View("Login");
+        }
+        public IActionResult PostLogin(int idUsuario)
+        {
+            Usuarios usuarioActivo = BD.verInfoUsuarioActivo(idUsuario);
+            ViewBag.usuario = usuarioActivo;
+            return View();
         }
 
         public IActionResult Registrarse()
