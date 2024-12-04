@@ -15,8 +15,6 @@
     return esValida;
 }
 
-// Evento para validar en tiempo real
 document.getElementById("contraseña").addEventListener("input", function() {
     validarContraseña(this.value);
 });
-

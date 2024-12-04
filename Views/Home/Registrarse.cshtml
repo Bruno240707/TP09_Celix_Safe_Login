@@ -24,7 +24,7 @@
             <div class="alert alert-danger">@ViewBag.Error</div>
         }
 
-        <form action='@Url.Action("Registro", "Home")' method="post" id="registroForm">
+        <form action='@Url.Action("Registro", "Home")' method="post" id="registroForm" onsubmit="return validarContraseña()">
             <div class="form-group">
                 <label for="nombre">Nombre</label>
                 <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingresa tu nombre" required>

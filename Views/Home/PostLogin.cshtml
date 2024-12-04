@@ -11,22 +11,19 @@
     <link rel="stylesheet" href="estilo.css">
 </head>
 <body class="HOME">
-    <header>
+<header>
         <div class="navbar">
             <a href='@Url.Action("PostLogin","Home", new { IdUsuario = ViewBag.usuario.idUsuario })' class="logo">Celix-Safe</a>
             <nav>
                 <a href="#">Foro</a>
-                <a href="#">Recetas</a>
-                <a href="#">Productos</a>
-                <a href="#">Establecimientos</a>
+                <a href='@Url.Action("Recetas","Home", new { IdUsuario = ViewBag.usuario.idUsuario })'>Recetas</a>
+                <a href='@Url.Action("Productos","Home", new { IdUsuario = ViewBag.usuario.idUsuario })'>Productos</a>
+                <a href='@Url.Action("Establecimientos","Home", new { IdUsuario = ViewBag.usuario.idUsuario })'>Establecimientos </a>
                
             </nav>  
             <a href='@Url.Action("Perfil","Home", new { IdUsuario = ViewBag.usuario.idUsuario })' class="username"> @ViewBag.usuario.username <img class="user" src="/Imagen/User.png" alt="User"> </a>
         </div>
-        <div class="header-image">
-            <img src="/Imagen/Banner.png" alt="Banner">
-        </div>
-    </header>
+</header>
 
     <main>
         <section class="intro">

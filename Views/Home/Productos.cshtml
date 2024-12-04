@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="site.js"></script>
+
+</head>
+
+<body class="HOME">
+
+<header>
+        <div class="navbar">
+            <a href='@Url.Action("PostLogin","Home", new { IdUsuario = ViewBag.usuario.idUsuario })' class="logo">Celix-Safe</a>
+            <nav>
+                <a href="#">Foro</a>
+                <a href='@Url.Action("Recetas","Home", new { IdUsuario = ViewBag.usuario.idUsuario })'>Recetas</a>
+                <a href='@Url.Action("Productos","Home", new { IdUsuario = ViewBag.usuario.idUsuario })'>Productos</a>
+                <a href='@Url.Action("Establecimientos","Home", new { IdUsuario = ViewBag.usuario.idUsuario })'>Establecimientos </a>
+               
+            </nav>  
+            <a href='@Url.Action("Perfil","Home", new { IdUsuario = ViewBag.usuario.idUsuario })' class="username"> @ViewBag.usuario.username <img class="user" src="/Imagen/User.png" alt="User"> </a>
+        </div>
+</header>
+
+
+<div class="busquedas">
+    <form action='@Url.Action("busquedaProducto", "Home", new { IdUsuario = ViewBag.usuario.idUsuario })' method="Post">
+        <div class="form-group">
+            <label for="text">Buscar producto</label>
+            <input type="text" class="form-control" id="busqueda" name="busqueda">
+        </div>
+    </form>
+
+    <ul>
+
+            @for (int i = 0; i < ViewBag.listaProductos.Count; i++)
+            {
+                <li>
+                    <img src="@ViewBag.listaProductos[i].fotoProducto" alt="@ViewBag.listaProductos[i].nombreProducto" />
+                    <strong>Producto:</strong> @ViewBag.listaProductos[i].nombreProducto <br />
+                    <strong>Precio:</strong> $@ViewBag.listaProductos[i].precioProducto <br />
+                    <strong>Categoría:</strong> @ViewBag.listaCategoriaProductos[@ViewBag.listaProductos[i].idCategoriaProducto - 1].nombreCategoriaProducto <br />
+                    <strong>Descripción:</strong> @ViewBag.listaProductos[i].descripcionProducto <br />
+                    <a href="#" class="boton-ver">Ver</a>
+                </li>
+            }
+
+    </ul>
+</div>
+
+</body>
+</html>

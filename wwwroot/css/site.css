@@ -392,3 +392,119 @@ body.olvide-password {
 
 
 /*Olvide contrraseña*/
+
+/*VIEW PRODUCTOS*/
+
+.busquedas {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+}
+
+.busquedas form {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.busquedas .form-group {
+  width: 80%;
+  position: relative;
+}
+
+.busquedas .form-group label {
+  position: absolute;
+  left: 10px;
+  top: 12px;
+  font-size: 14px;
+  color: #777;
+}
+
+.busquedas #busqueda {
+  width: 100%;
+  padding: 12px 40px 12px 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  outline: none;
+}
+
+.busquedas ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 20px;
+}
+
+.busquedas li {
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 15px;
+}
+
+.busquedas li img {
+  width: 100%;
+  border-bottom: 2px solid #f2f2f2;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+.busquedas li strong {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.busquedas li .boton-ver {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #ffcc33;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.busquedas li .boton-ver:hover {
+  background-color: #ffaa00;
+}
+
+.busquedas .basico {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: red;
+  color: white;
+  padding: 3px 8px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.busquedas .tiempo {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #ff3333;
+  color: white;
+  padding: 3px 8px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 5px;
+}

@@ -24,17 +24,17 @@ public class BD
         }
     }
 
-    public static bool existeUsuarioLogin(string email, string contraseña) 
+    public static List<Usuarios> ObtenerListaUsuarios()
     {
-        using (SqlConnection conn = new SqlConnection(_ConnectionString))
-        {
-            string sql = "SELECT (1) FROM Usuarios WHERE email = @email AND contraseña = @Contraseña";
-            int count = conn.QuerySingleOrDefault<int>(sql, new { email, contraseña });
-            return count > 0;
+        List<Usuarios> listaUsuarios = new List<Usuarios>();
+        using(SqlConnection conn = new SqlConnection(_ConnectionString)){
+            string sql="SELECT * FROM Usuarios";
+            listaUsuarios = conn.Query<Usuarios>(sql).ToList();
         }
+        return listaUsuarios;
     }
 
-        public static bool existeUsuarioRegistro(string email) 
+    public static bool existeUsuarioRegistro(string email) 
     {
         using (SqlConnection conn = new SqlConnection(_ConnectionString))
         {
@@ -70,6 +70,100 @@ public class BD
         
             return result;
         }
+    }
+
+//------------
+    public static List<Categoria_Productos> ObtenerListaCategoriaProductos()
+    {
+        List<Categoria_Productos> listaCategoriaProductos = new List<Categoria_Productos>();
+        using(SqlConnection conn = new SqlConnection(_ConnectionString)){
+            string sql="SELECT * FROM Categoria_Productos";
+            listaCategoriaProductos = conn.Query<Categoria_Productos>(sql).ToList();
+        }
+        return listaCategoriaProductos;
+    }
+
+    public static List<Productos> ObtenerListaProductos()
+    {
+        List<Productos> listaProductos = new List<Productos>();
+        using(SqlConnection conn = new SqlConnection(_ConnectionString)){
+            string sql="SELECT * FROM Productos";
+            listaProductos = conn.Query<Productos>(sql).ToList();
+        }
+        return listaProductos;
+    }
+
+    public static List<Productos> ObtenerListaProductosBusqueda(string busqueda)
+    {
+        List<Productos> listaProductosBuscados = new List<Productos>();
+        using(SqlConnection conn = new SqlConnection(_ConnectionString)){
+            string sql="SELECT * FROM Productos WHERE nombreProducto LIKE @Busqueda";
+            listaProductosBuscados = conn.Query<Productos>(sql, new {Busqueda = busqueda + "%"}).ToList();
+        }
+        return listaProductosBuscados;
+    }
+
+//--
+    public static List<Ubicacion_Establecimiento> ObtenerListaUbicacionEstablecimientos()
+    {
+        List<Ubicacion_Establecimiento> listaUbicacionEstablecimientos = new List<Ubicacion_Establecimiento>();
+        using(SqlConnection conn = new SqlConnection(_ConnectionString)){
+            string sql="SELECT * FROM Ubicacion_Establecimiento";
+            listaUbicacionEstablecimientos = conn.Query<Ubicacion_Establecimiento>(sql).ToList();
+        }
+        return listaUbicacionEstablecimientos;
+    }
+
+    public static List<Establecimientos> ObtenerListaEstablecimientos()
+    {
+        List<Establecimientos> listaEstablecimientos = new List<Establecimientos>();
+        using(SqlConnection conn = new SqlConnection(_ConnectionString)){
+            string sql="SELECT * FROM Establecimientos";
+            listaEstablecimientos = conn.Query<Establecimientos>(sql).ToList();
+        }
+        return listaEstablecimientos;
+    }
+
+    public static List<Establecimientos> ObtenerListaEstablecimientoBusqueda(string busqueda)
+    {
+        List<Establecimientos> listaEstablecimientosBuscados = new List<Establecimientos>();
+        using(SqlConnection conn = new SqlConnection(_ConnectionString)){
+            string sql="SELECT * FROM Establecimientos WHERE nombreEstablecimiento LIKE @Busqueda";
+            listaEstablecimientosBuscados = conn.Query<Establecimientos>(sql, new {Busqueda = busqueda + "%"}).ToList();
+        }
+        return listaEstablecimientosBuscados;
+    }
+
+//---
+
+    public static List<Categoria_Recetas> ObtenerListaCategoriaRecetas()
+    {
+        List<Categoria_Recetas> listaCategoriaRecetas = new List<Categoria_Recetas>();
+        using(SqlConnection conn = new SqlConnection(_ConnectionString)){
+            string sql="SELECT * FROM Categoria_Recetas";
+            listaCategoriaRecetas = conn.Query<Categoria_Recetas>(sql).ToList();
+        }
+        return listaCategoriaRecetas;
+    }
+
+    public static List<Recetas> ObtenerListaRecetas()
+    {
+        List<Recetas> listaRecetas = new List<Recetas>();
+        using(SqlConnection conn = new SqlConnection(_ConnectionString)){
+            string sql="SELECT * FROM Recetas";
+            listaRecetas = conn.Query<Recetas>(sql).ToList();
+        }
+        return listaRecetas;
+    }
+
+    public static List<Recetas> ObtenerListaRecetaBusqueda(string busqueda)
+    {
+        List<Recetas> listaRecetasBuscados = new List<Recetas>();
+        using(SqlConnection conn = new SqlConnection(_ConnectionString)){
+            string sql="SELECT * FROM Recetas WHERE nombreReceta LIKE @Busqueda";
+            listaRecetasBuscados = conn.Query<Recetas>(sql, new {Busqueda = busqueda + "%"}).ToList();
+        }
+        return listaRecetasBuscados;
     }
 
 }
