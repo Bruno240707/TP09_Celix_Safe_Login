@@ -1,5 +1,5 @@
 @{
-    ViewData["Title"] = "Post Login";
+    ViewData["Title"] = "PostLogin";
 }
 
 <!DOCTYPE html>
@@ -13,7 +13,7 @@
 <body class="HOME">
     <header>
         <div class="navbar">
-            <a href='@Url.Action("PostLogin","Home")' class="logo">Celix-Safe</a>
+            <a href='@Url.Action("PostLogin","Home", new { IdUsuario = ViewBag.usuario.idUsuario })' class="logo">Celix-Safe</a>
             <nav>
                 <a href="#">Foro</a>
                 <a href="#">Recetas</a>
@@ -21,7 +21,7 @@
                 <a href="#">Establecimientos</a>
                
             </nav>  
-            <a href='@Url.Action("Perfil","Home")' class="username"> @ViewBag.usuario.username <img class="user" src="/Imagen/User.png" alt="User"> </a>
+            <a href='@Url.Action("Perfil","Home", new { IdUsuario = ViewBag.usuario.idUsuario })' class="username"> @ViewBag.usuario.username <img class="user" src="/Imagen/User.png" alt="User"> </a>
         </div>
         <div class="header-image">
             <img src="/Imagen/Banner.png" alt="Banner">

@@ -36,14 +36,14 @@ public class HomeController : Controller
             {
                 Usuarios usuarioIngreso = BD.verInfoUsuario(email);
                 ViewBag.usuario = usuarioIngreso;
-                return RedirectToAction("PostLogin", new { id = usuarioIngreso.idUsuario });
+                return RedirectToAction("PostLogin", new { IdUsuario = usuarioIngreso.idUsuario });
             }
 
             return View("Login");
         }
-        public IActionResult PostLogin(int idUsuario)
+        public IActionResult PostLogin(int IdUsuario)
         {
-            Usuarios usuarioActivo = BD.verInfoUsuarioActivo(idUsuario);
+            Usuarios usuarioActivo = BD.verInfoUsuarioActivo(IdUsuario);
             ViewBag.usuario = usuarioActivo;
             return View();
         }
@@ -112,8 +112,10 @@ public class HomeController : Controller
             return RedirectToAction("Login");
         }
 
-        public IActionResult Perfil()
+        public IActionResult Perfil(int IdUsuario)
         {
+            Usuarios usuarioActivo = BD.verInfoUsuarioActivo(IdUsuario);
+            ViewBag.usuario = usuarioActivo;
             return View();
         }
 
