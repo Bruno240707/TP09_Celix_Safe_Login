@@ -64,6 +64,10 @@ public class HomeController : Controller
                 return View("Registrarse");
             }
 
+            if(!ValidarContraseña(user.contraseña)){
+                return View("Registrarse");
+            }
+
             if (user.contraseña != confirmarContra)
             {
                 return View("Registrarse");
@@ -75,7 +79,6 @@ public class HomeController : Controller
             {
                 if (listaUsuarios[i].email == user.email)
                 {
-                    if (listaUsuarios[i].email == user.email) { return View("Registrarse"); }
                     return View("Registrarse");
                 }
             }
