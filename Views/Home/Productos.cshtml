@@ -28,8 +28,7 @@
 <div class="busquedas">
     <form action='@Url.Action("busquedaProducto", "Home", new { IdUsuario = ViewBag.usuario.idUsuario })' method="Post">
         <div class="form-group">
-            <label for="text">Buscar producto</label>
-            <input type="text" class="form-control" id="busqueda" name="busqueda">
+            <input type="text" class="form-control" placeholder="Buscar productos" id="busqueda" name="busqueda">
         </div>
     </form>
 
