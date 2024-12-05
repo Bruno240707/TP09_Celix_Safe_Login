@@ -33,14 +33,14 @@
 
     <ul>
 
-            @for (int i = 0; i < ViewBag.listaRecetas.Count; i++)
+            @foreach (Recetas item in ViewBag.listaRecetas)
             {
                 <li>
-                    <img src="@ViewBag.listaRecetas[i].fotoReceta" alt="@ViewBag.listaRecetas[i].nombreReceta" />
-                    <strong>Nombre receta:</strong> @ViewBag.listaRecetas[i].nombreReceta <br />
-                    <strong>Contenido:</strong> @ViewBag.listaRecetas[i].contenidoReceta <br />
-                    <strong>Categoría:</strong> @ViewBag.listaCategoriaRecetas[@ViewBag.listaRecetas[i].idCategoriaReceta - 1].nombreCategoriaReceta <br />
-                    <strong>Calificación:</strong> @ViewBag.listaRecetas[i].calificacionReceta <br />
+                    <img src="@item.fotoReceta" alt="@item.nombreReceta" />
+                    <strong>Nombre receta:</strong> @item.nombreReceta <br />
+                    <strong>Contenido:</strong> @item.contenidoReceta <br />
+                    <strong>Categoría:</strong> @ViewBag.listaCategoriaRecetas[@item.idCategoriaReceta - 1].nombreCategoriaReceta <br />
+                    <strong>Calificación:</strong> @item.calificacionReceta <br />
                     <a href="#" class="boton-ver">Ver</a>
                 </li>
             }

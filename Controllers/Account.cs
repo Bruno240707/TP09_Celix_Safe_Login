@@ -212,7 +212,7 @@ public class HomeController : Controller
             Recetas receta = BD.ObtenerRecetaPorId(id);
             if (receta != null)
             {
-                return Json(receta); // Devuelve la receta como JSON
+                return Json(receta); 
             }
             return NotFound(); 
         }

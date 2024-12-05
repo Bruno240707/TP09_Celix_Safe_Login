@@ -54,12 +54,13 @@
 
 <div id="modal" class="modal">
   <div class="modal-content">
-    <span id="close-btn" class="close-btn">&times;</span>
+    <!-- contenido -->
     <h2 id="receta-name">Detalles de la Receta</h2>
     <img id="modalImagen" src="" alt="Imagen">
     <p id="modalTitulo"></p>
     <p id="modalContenido"></p>
     <p>Calificación: <span id="modalCalificacion"></span></p>
+    <!-- contenido -->
     <div class="modal-footer">
         <a href='@Url.Action("Recetas","Home", new { IdUsuario = ViewBag.usuario.idUsuario })' class="button-info">Volver</a>
     </div>

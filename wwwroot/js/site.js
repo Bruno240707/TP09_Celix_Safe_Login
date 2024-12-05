@@ -43,12 +43,4 @@ function mostrarReceta(idReceta) {
     });
 }
 
-$('#close-button').click(function() {
-    $('#modal').css('display', 'none');
-});
 
-window.onclick = function(event) {
-    if (event.target == document.getElementById('modal')) {
-        $('#modal').css('display', 'none');
-    }
-};
