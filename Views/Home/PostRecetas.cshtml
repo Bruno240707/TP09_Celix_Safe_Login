@@ -40,7 +40,7 @@
                     <strong>Contenido:</strong> @ViewBag.listaRecetasBuscados[i].contenidoReceta <br />
                     <strong>Categoría:</strong> @ViewBag.listaCategoriaRecetas[@ViewBag.listaRecetasBuscados[i].idCategoriaReceta - 1].nombreCategoriaReceta <br />
                     <strong>Calificación:</strong> @ViewBag.listaRecetasBuscados[i].calificacionReceta <br />
-                    <a href="#" class="boton-ver">Ver</a>
+                    <button class="btn btn-primary" onclick="mostrarReceta(@ViewBag.listaRecetasBuscados[i].idReceta)">Acercar</button>
                 </li>
             }
         }
@@ -50,6 +50,23 @@
         }
     </ul>
 </div>
+
+
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span id="close-btn" class="close-btn">&times;</span>
+    <h2 id="receta-name">Detalles de la Receta</h2>
+    <img id="modalImagen" src="" alt="Imagen">
+    <p id="modalTitulo"></p>
+    <p id="modalContenido"></p>
+    <p>Calificación: <span id="modalCalificacion"></span></p>
+    <div class="modal-footer">
+        <a href='@Url.Action("Recetas","Home", new { IdUsuario = ViewBag.usuario.idUsuario })' class="button-info">Volver</a>
+    </div>
+  </div>
+</div>
+
+
 
 </body>
 

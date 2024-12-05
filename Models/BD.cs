@@ -166,4 +166,13 @@ public class BD
         return listaRecetasBuscados;
     }
 
+     public static Recetas ObtenerRecetaPorId(int idReceta)
+    {
+        using (SqlConnection conn = new SqlConnection(_ConnectionString))
+        {
+            string sql = "SELECT * FROM Recetas WHERE idReceta = @idReceta";
+            return conn.QuerySingleOrDefault<Recetas>(sql, new { idReceta });
+        }
+    }
+
 }

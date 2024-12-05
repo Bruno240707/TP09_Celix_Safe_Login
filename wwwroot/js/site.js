@@ -18,3 +18,37 @@
 document.getElementById("contraseña").addEventListener("input", function() {
     validarContraseña(this.value);
 });
+
+
+
+//model
+
+function mostrarReceta(idReceta) {
+    $.ajax({
+        url: '/Home/ObtenerReceta',  
+        type: 'GET',
+        data: { id: idReceta },
+        success: function(response) {
+            
+            $('#modalImagen').attr('src', response.fotoReceta);
+            $('#modalTitulo').text(response.nombreReceta);
+            $('#modalContenido').text(response.contenidoReceta);
+            $('#modalCalificacion').text(response.calificacionReceta);
+
+            $('#modal').css('display', 'flex');
+        },
+        error: function(xhr, status, error) {
+            console.error("Error:", error);
+        }
+    });
+}
+
+$('#close-button').click(function() {
+    $('#modal').css('display', 'none');
+});
+
+window.onclick = function(event) {
+    if (event.target == document.getElementById('modal')) {
+        $('#modal').css('display', 'none');
+    }
+};
