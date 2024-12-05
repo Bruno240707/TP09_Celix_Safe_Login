@@ -1,7 +1,7 @@
-﻿function validarContraseña(password) {
-    const minLargo = password.length >= 8;
-    const tieneMayuscula = /[A-Z]/.test(password);
-    const tieneEspecial = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+﻿function validarContraseña(contraseña) {
+    const minLargo = contraseña.length >= 8;
+    const tieneMayuscula = /[A-Z]/.test(contraseña);
+    const tieneEspecial = /[!@#$%^&*(),.?":{}|<>]/.test(contraseña);
 
     let esValida = minLargo && tieneMayuscula && tieneEspecial;
     
