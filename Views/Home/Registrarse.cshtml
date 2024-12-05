@@ -41,6 +41,7 @@
             </div>
 
             <div class="form-group">
+                <p> @ViewBag.Error </p>
                 <label for="email">Correo Electrónico</label>
                 <input type="email" class="form-control" id="email" name="email" placeholder="Ingresa tu correo" required>
             </div>
@@ -52,13 +53,14 @@
 
             <div class="form-group">
                 <label for="contraseña">Contraseña</label>
-                <input type="password" class="form-control" id="contraseña" name="contraseña" placeholder="Elige una contraseña" required>
-                <div id="mensajeError" style="color: red; font-size: 0.9em;"></div>
+                <input type="password" class="form-control" id="contraseña" name="contraseña" placeholder="Elige una contraseña" onkeyup="validarContraseña()" required>
+                <p id="mensajeError"> </p> 
             </div>
 
             <div class="form-group">
                 <label for="confirmarContraseña">Confirmar Contraseña</label>
-                <input type="password" class="form-control" id="confirmarContra" name="confirmarContra" placeholder="Repite la contraseña" required>
+                <input type="password" class="form-control" id="confirmarContra" name="confirmarContra" placeholder="Repite la contraseña" onkeyup="validarContraseña()" required>
+                <p id="ContraDif"> </p> 
             </div>
 
             <button type="submit" class="btn btn-primary btn-block">Registrarse</button>

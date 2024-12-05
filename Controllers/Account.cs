@@ -64,21 +64,13 @@ public class HomeController : Controller
                 return View("Registrarse");
             }
 
-            if(!ValidarContraseña(user.contraseña)){
-                return View("Registrarse");
-            }
-
-            if (user.contraseña != confirmarContra)
-            {
-                return View("Registrarse");
-            }
-
             List<Usuarios> listaUsuarios = BD.ObtenerListaUsuarios();
 
             for (int i = 0; i < listaUsuarios.Count; i++)
             {
                 if (listaUsuarios[i].email == user.email)
                 {
+                    ViewBag.Error = "El mail ya existe";
                     return View("Registrarse");
                 }
             }

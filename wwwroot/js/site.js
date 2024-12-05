@@ -1,23 +1,40 @@
-﻿function validarContraseña(contraseña) {
-    const minLargo = contraseña.length >= 8;
-    const tieneMayuscula = /[A-Z]/.test(contraseña);
-    const tieneEspecial = /[!@#$%^&*(),.?":{}|<>]/.test(contraseña);
+﻿function validarContraseña() {
+    let contraseña = document.getElementById("contraseña");
+    let contra1= contraseña;
+    let contra2 = document.getElementById("confirmarContra");
+    const minLargo = contra1.value.length >= 8; 
+    const tieneMayuscula = /[A-Z]/.test(contra1.value); 43 
+    const tieneEspecial = /[!@#$%^&*(),.?":{}|<>]/.test(contra1.value);
 
-    let esValida = minLargo && tieneMayuscula && tieneEspecial;
+    let esValida = true;
     
-    const mensajeError = document.getElementById("mensajeError");
+    let mensajeError = document.getElementById("mensajeError");
 
-    if (esValida) {
-        mensajeError.textContent = "";
-    } else {
-        mensajeError.textContent = "La contraseña debe tener al menos 8 caracteres, una mayúscula y un carácter especial.";
+    let mens = document.getElementById("ContraDif");
+
+    if(!minLargo || !tieneEspecial || !tieneMayuscula)
+    {
+        mensajeError.innerHTML= "La contraseña debe tener 8 caracteres, una mayuscula y un caracter especial";
+        esValida=false;
     }
+    else {
+        mensajeError.innerHTML= "";
+    }
+
+    if(contra1.value != contra2.value)
+    {
+        mens.innerHTML= "Las contraseñas no son coincidientes";
+        esValida=false;
+    }
+    else {
+        mens.innerHTML= "";
+    }
+
     return esValida;
 }
 
-document.getElementById("contraseña").addEventListener("input", function() {
-    validarContraseña(this.value);
-});
+
+
 
 
 
