@@ -75,6 +75,7 @@ public class HomeController : Controller
             {
                 if (listaUsuarios[i].email == user.email)
                 {
+                    if (listaUsuarios[i].email == user.email) { return View("Registrarse"); }
                     return View("Registrarse");
                 }
             }
