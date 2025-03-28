@@ -188,6 +188,27 @@ public class HomeController : Controller
             return View("PostRecetas");
         }
 
+        public IActionResult ViewAñadirRecetas(int IdUsuario)
+        {
+            Usuarios usuarioActivo = BD.verInfoUsuarioActivo(IdUsuario);
+            ViewBag.usuario = usuarioActivo;
+            return View("AñadirRecetas");
+        }
+
+        public IActionResult AñadirRecetas(Recetas receta,int IdUsuario) 
+        {
+            Usuarios usuarioActivo = BD.verInfoUsuarioActivo(IdUsuario);
+            ViewBag.usuario = usuarioActivo;
+
+            BD.agregarReceta(receta);
+
+            List<Categoria_Recetas> listaCategoriaRecetas = BD.ObtenerListaCategoriaRecetas();
+            List<Recetas> listaRecetas = BD.ObtenerListaRecetas();
+            ViewBag.listaRecetas = listaRecetas;
+            ViewBag.listaCategoriaRecetas = listaCategoriaRecetas;
+            return View("Recetas");
+        }
+
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------
         private bool ValidarContraseña(string contraseña)

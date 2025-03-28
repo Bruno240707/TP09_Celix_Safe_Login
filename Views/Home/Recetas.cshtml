@@ -31,6 +31,9 @@
         </div>
     </form>
 
+        <a href='@Url.Action("ViewAñadirRecetas","Home", new { IdUsuario = ViewBag.usuario.idUsuario })'>Añadir Recetas </a>
+
+
     <ul>
 
             @foreach (Recetas item in ViewBag.listaRecetas)

@@ -52,6 +52,14 @@ public class BD
         }
     }
 
+    public static void agregarReceta(Recetas receta)
+    {
+        string sql = "INSERT INTO Recetas(nombreReceta, contenidoReceta, calificacionReceta, idCategoriaReceta, fotoReceta) VALUES (@nombreReceta, @contenidoReceta, @calificacionReceta, @idCategoriaReceta ,@fotoReceta)";
+        using(SqlConnection conn = new SqlConnection(_ConnectionString)) {
+            conn.Execute(sql, new {nombreReceta = receta.nombreReceta, contenidoReceta = receta.contenidoReceta, calificacionReceta = receta.calificacionReceta, idCategoriaReceta = receta.idCategoriaReceta, fotoReceta = receta.fotoReceta});
+        }
+    }
+
     public static void cambiarContra(string email, string nuevaContraseña, string nombrePerro)
     {
         using (SqlConnection conn = new SqlConnection(_ConnectionString))
