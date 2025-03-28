@@ -57,6 +57,12 @@ public class HomeController : Controller
             return View();
         }
 
+        public IActionResult Foro(int IdUsuario)
+        {
+            Usuarios usuarioActivo = BD.verInfoUsuarioActivo(IdUsuario);
+            ViewBag.usuario = usuarioActivo;
+            return View();
+        }
         public IActionResult Registro(Usuarios user, string confirmarContra)
         {
             if (user.username == null || user.contraseña == null || confirmarContra == null)
