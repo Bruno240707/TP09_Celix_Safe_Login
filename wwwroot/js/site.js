@@ -59,5 +59,65 @@ function mostrarReceta(idReceta) {
         }
     });
 }
+const AgregarPost = () => {
+    
+    const titulo = document.getElementById('tituloPost').value.trim();
+    const contenido = document.getElementById('contenidoPost').value.trim();
+
+ 
+    if (titulo && contenido) {
+        
+        const nuevoPost = document.createElement('div');
+        nuevoPost.classList.add('post');  
+
+       
+        nuevoPost.innerHTML = `
+            <h2>${titulo}</h2>
+            <p>${contenido}</p>
+            <div class="comentarios"></div>
+            <textarea placeholder="Escribe tu comentario..." rows="3"></textarea>
+            <button onclick="agregarComentario(this)">Enviar Comentario</button>
+        `;
+
+        document.getElementById('posts').prepend(nuevoPost);
+        document.getElementById('tituloPost').value = '';
+        document.getElementById('contenidoPost').value = '';
+    } else {
+        alert('Por favor, completa tanto el título como el contenido del post.');
+    }
+};
+
+const agregarComentario = (button) => {
+ 
+    const post = button.closest('.post');
+
+    const comentarioTextarea = post.querySelector('textarea');
+    const comentarioTexto = comentarioTextarea.value.trim();
+    
+
+    if (comentarioTexto) {
+  
+        const nuevoComentario = document.createElement('div');
+        nuevoComentario.classList.add('comentario');
+        
+       
+        nuevoComentario.innerHTML = `<p><strong>Nuevo Usuario</strong> ${comentarioTexto}</p>`;
+        
+       
+        post.querySelector('.comentarios').appendChild(nuevoComentario);
+        
+   
+        const contador = post.querySelector('.contadorComentarios');
+        const numComentarios = post.querySelectorAll('.comentario').length;
+        contador.textContent = numComentarios;
+
+       
+        comentarioTextarea.value = '';
+    } else {
+ 
+        alert('Por favor, escribe un comentario antes de enviarlo.');
+    }
+};
+
 
 
