@@ -26,42 +26,46 @@
 <div class="AñadirRecetas">
     <h1>AÑADIR RECETA</h1>
 
-    <form action='@Url.Action("AñadirRecetas", "Home")' method="post" id="registroForm" onsubmit="return validarAñadirReceta()">
+    <form action='@Url.Action("AnadirRecetas", "Home", new { IdUsuario = ViewBag.usuario.idUsuario })' method="post" id="registroForm" onsubmit="return validarAñadirReceta()">
         <div class="form-group">
             <label for="nombreReceta">Nombre Receta</label>
-            <input type="text" class="form-control" id="nombreReceta" placeholder="Ingresa el nombre de la receta" onkeyup="validarNombreReceta()">
-            <p id="mensajeErrorNombre"> </p>
+            <input type="text" class="form-control" id="nombreReceta" name="nombreReceta" placeholder="Ingresa el nombre de la receta" onkeyup="validarNombreReceta()">
+            <p id="mensajeErrorNombre"></p>
         </div>
-            
+
         <div class="form-group">
             <label for="contenidoReceta">Contenido de la receta</label>
-            <input type="text" class="form-control" id="contenidoReceta" placeholder="Ingresa el contenido de la receta" onkeyup="validarContenidoReceta()">
+            <input type="text" class="form-control" id="contenidoReceta" name="contenidoReceta" placeholder="Ingresa el contenido de la receta" onkeyup="validarContenidoReceta()">
             <p id="mensajeErrorContenido"></p>
         </div>
 
         <div class="form-group">
-            <label for="calificacionReceta">Calificacion de la receta</label>
-            <select class="form-control" id="calificacionReceta" onchange="validarCalificacion()">
-            <option value="">Selecciona una calificación</option>
-            <option value="1">1 ⭐ - Muy Mala</option>
-            <option value="2">2 ⭐⭐ - Mala</option>
-            <option value="3">3 ⭐⭐⭐ - Regular</option>
-            <option value="4">4 ⭐⭐⭐⭐ - Buena</option>
-            <option value="5">5 ⭐⭐⭐⭐⭐ - Excelente</option>
-            </select>            
-            <p id="mensajeErrorCalificacion"> </p>
+            <label for="calificacionReceta">Calificación de la receta</label>
+            <select class="form-control" id="calificacionReceta" name="calificacionReceta" onchange="validarCalificacion()">
+                <option value="">Selecciona una calificación</option>
+                <option value="1">1 ⭐ - Muy Mala</option>
+                <option value="2">2 ⭐⭐ - Mala</option>
+                <option value="3">3 ⭐⭐⭐ - Regular</option>
+                <option value="4">4 ⭐⭐⭐⭐ - Buena</option>
+                <option value="5">5 ⭐⭐⭐⭐⭐ - Excelente</option>
+            </select>
+            <p id="mensajeErrorCalificacion"></p>
         </div>
 
         <div class="form-group">
-            <label for="calificacionReceta">Categoria Receta</label>
-          
-            <p id="mensajeErrorCalificacion"> </p>
+            <label for="categoriaReceta">Categoría de la Receta</label>
+            <select class="form-control" id="idCategoriaReceta" name="idCategoriaReceta">
+                @foreach (Categoria_Recetas categoria in ViewBag.CategoriaRecetas)
+                {
+                    <option value="@categoria.idCategoriaReceta">@categoria.nombreCategoriaReceta</option>
+                }
+            </select>
+            <p id="mensajeErrorCategoria"></p>
         </div>
 
-        </div>
-            <div class="form-group">
+        <div class="form-group">
             <label for="fotoReceta">Foto Receta</label>
-            <input type="text" class="form-control" id="contenidoReceta" placeholder="Ingresa la foto de la receta en formato link" onkeyup="validarContenidoReceta()">
+            <input type="text" class="form-control" id="fotoReceta" name="fotoReceta" placeholder="Ingresa la foto de la receta en formato URL" onkeyup="validarFotoReceta()">
             <p id="mensajeErrorFoto"></p>
         </div>
 
@@ -69,7 +73,7 @@
             <button type="submit">Añadir Receta</button>
         </div>
     </form>
-
+    
 </div>
 
 </body>

@@ -198,15 +198,17 @@ public class HomeController : Controller
         {
             Usuarios usuarioActivo = BD.verInfoUsuarioActivo(IdUsuario);
             ViewBag.usuario = usuarioActivo;
+            List<Categoria_Recetas> listaCategoriaRecetas = BD.ObtenerListaCategoriaRecetas();
+            ViewBag.CategoriaRecetas = listaCategoriaRecetas;
             return View("AñadirRecetas");
         }
 
-        public IActionResult AñadirRecetas(Recetas receta,int IdUsuario) 
+        public IActionResult AnadirRecetas(Recetas receta,int IdUsuario) 
         {
+            BD.agregarReceta(receta);
+            
             Usuarios usuarioActivo = BD.verInfoUsuarioActivo(IdUsuario);
             ViewBag.usuario = usuarioActivo;
-
-            BD.agregarReceta(receta);
 
             List<Categoria_Recetas> listaCategoriaRecetas = BD.ObtenerListaCategoriaRecetas();
             List<Recetas> listaRecetas = BD.ObtenerListaRecetas();
