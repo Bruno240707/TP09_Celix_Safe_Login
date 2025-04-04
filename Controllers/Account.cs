@@ -57,8 +57,9 @@ public class HomeController : Controller
             return View();
         }
 
-        public IActionResult Foro(int IdUsuario)
+        public IActionResult Foro(Post post, int IdUsuario)
         {
+            BD.agregarPost(post);
             Usuarios usuarioActivo = BD.verInfoUsuarioActivo(IdUsuario);
             ViewBag.usuario = usuarioActivo;
             return View();

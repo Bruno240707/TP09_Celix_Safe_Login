@@ -13,7 +13,7 @@
         <div class="navbar">
             <a href='@Url.Action("PostLogin","Home", new { IdUsuario = ViewBag.usuario.idUsuario })' class="logo">Celix-Safe</a>
             <nav>
-                <a href="#">Foro</a>
+                <a href='@Url.Action("Foro","Home", new { IdUsuario = ViewBag.usuario.idUsuario })'>Foro</a>
                 <a href='@Url.Action("Recetas","Home", new { IdUsuario = ViewBag.usuario.idUsuario })'>Recetas</a>
                 <a href='@Url.Action("Productos","Home", new { IdUsuario = ViewBag.usuario.idUsuario })'>Productos</a>
                 <a href='@Url.Action("Establecimientos","Home", new { IdUsuario = ViewBag.usuario.idUsuario })'>Establecimientos </a>

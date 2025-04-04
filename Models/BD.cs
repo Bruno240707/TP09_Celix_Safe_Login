@@ -60,6 +60,16 @@ public class BD
         }
     }
 
+    public static void agregarPost(Post post)
+    {
+        
+        using(SqlConnection conn = new SqlConnection(_ConnectionString)) 
+        {
+            string sql = "INSERT INTO Foro(tituloPost, contenidoPost) VALUES (@tituloPost, @contenidoPost)";
+            conn.Execute(sql, new {tituloPost = post.tituloPost, contenidoPost = post.contenidoPost});
+        }
+    }
+
     public static void cambiarContra(string email, string nuevaContraseña, string nombrePerro)
     {
         using (SqlConnection conn = new SqlConnection(_ConnectionString))

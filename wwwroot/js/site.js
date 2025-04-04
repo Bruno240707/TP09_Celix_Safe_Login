@@ -191,10 +191,13 @@ const agregarComentario = (button) => {
 
        
         comentarioTextarea.value = '';
+    
+    
     } else {
  
         alert('Por favor, escribe un comentario antes de enviarlo.');
     }
+  
 };
 
 
