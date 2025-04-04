@@ -59,6 +59,13 @@ public class BD
             conn.Execute(sql, new {nombreReceta = receta.nombreReceta, contenidoReceta = receta.contenidoReceta, calificacionReceta = receta.calificacionReceta, idCategoriaReceta = receta.idCategoriaReceta, fotoReceta = receta.fotoReceta});
         }
     }
+    public static void agregarProducto(Productos producto)
+    {
+        string sql = "INSERT INTO Recetas(nombreProducto, precioProducto, idCategoriaProducto, stock, calificacionProducto, fotoProducto, descripcionProducto) VALUES (@nombreProducto, @precioProducto, @idCategoriaProducto, @stock, @calificacionProducto, @fotoProducto, @descripcionProducto)";
+        using(SqlConnection conn = new SqlConnection(_ConnectionString)) {
+            conn.Execute(sql, new {nombreProducto = producto.nombreProducto, precioProducto = producto.precioProducto, idCategoriaProducto = producto.idCategoriaProducto, stock = producto.stock ,calificacionProducto = producto.calificacionProducto, fotoProducto = producto.fotoProducto, descripcionProducto = producto.descripcionProducto});
+        }
+    }
 
     public static void cambiarContra(string email, string nuevaContraseña, string nombrePerro)
     {
