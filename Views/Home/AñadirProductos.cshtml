@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<body class="HOME">
+
+<header>
+        <div class="navbar">
+            <a href='@Url.Action("PostLogin","Home", new { IdUsuario = ViewBag.usuario.idUsuario })' class="logo">Celix-Safe</a>
+            <nav>
+                <a href="#">Foro</a>
+                <a href='@Url.Action("Recetas","Home", new { IdUsuario = ViewBag.usuario.idUsuario })'>Recetas</a>
+                <a href='@Url.Action("Productos","Home", new { IdUsuario = ViewBag.usuario.idUsuario })'>Productos</a>
+                <a href='@Url.Action("Establecimientos","Home", new { IdUsuario = ViewBag.usuario.idUsuario })'>Establecimientos </a>
+               
+            </nav>  
+            <a href='@Url.Action("Perfil","Home", new { IdUsuario = ViewBag.usuario.idUsuario })' class="username"> @ViewBag.usuario.username <img class="user" src="/Imagen/User.png" alt="User"> </a>
+        </div>
+</header>
+
+<div class="AñadirRecetas">
+    <h1>AÑADIR PRODUCTO</h1>
+
+    <form action='@Url.Action("AnadirProductos", "Home", new { IdUsuario = ViewBag.usuario.idUsuario })' method="post" id="registroForm" onsubmit="return validarAñadirReceta()">
+        <div class="form-group">
+            <label for="nombreReceta">Nombre Producto</label>
+            <input type="text" class="form-control" id="nombreProducto" name="nombreProducto" placeholder="Ingresa el nombre del producto" onkeyup="validarNombreReceta()">
+            <p id="mensajeErrorNombre"></p>
+        </div>
+
+        <div class="form-group">
+            <label for="contenidoReceta">Precio Producto</label>
+            <input type="text" class="form-control" id="precioProducto" name="contenidoReceta" placeholder="Ingresa el precio del producto">
+            <p id="mensajeErrorContenido"></p>
+        </div>
+
+        <div class="form-group">
+            <label for="contenidoReceta">Descripcion Producto</label>
+            <input type="text" class="form-control" id="descripcionProducto" name="descripcionProducto" placeholder="Ingresa la descripcion del producto" onkeyup="validarContenidoReceta()">
+            <p id="mensajeErrorContenido"></p>
+        </div>
+
+        <div class="form-group">
+            <label for="calificacionReceta">Calificación del producto</label>
+            <select class="form-control" id="calificacionProducto" name="calificacionProducto" onchange="validarCalificacion()">
+                <option value="">Selecciona una calificación</option>
+                <option value="1">1 ⭐ - Muy Mala</option>
+                <option value="2">2 ⭐⭐ - Mala</option>
+                <option value="3">3 ⭐⭐⭐ - Regular</option>
+                <option value="4">4 ⭐⭐⭐⭐ - Buena</option>
+                <option value="5">5 ⭐⭐⭐⭐⭐ - Excelente</option>
+            </select>
+            <p id="mensajeErrorCalificacion"></p>
+        </div>
+
+        <div class="form-group">
+            <label for="categoriaReceta">Categoría del Producto</label>
+            <select class="form-control" id="idCategoriaReceta" name="idCategoriaReceta">
+                @foreach (Categoria_Productos categoria in ViewBag.CategoriaProductos)
+                {
+                    <option value="@categoria.idCategoriaProducto">@categoria.nombreCategoriaProducto</option>
+                }
+            </select>
+            <p id="mensajeErrorCategoria"></p>
+        </div>
+
+        <div class="form-group">
+            <label for="fotoReceta">Stock producto</label>
+            <input type="text" class="form-control" id="stockProducto" name="stockProducto" placeholder="Ingresa el stock del producto">
+            <p id="mensajeErrorFoto"></p>
+        </div>
+
+        <div class="form-group">
+            <label for="fotoReceta">Foto Producto</label>
+            <input type="text" class="form-control" id="fotoProducto" name="fotoProducto" placeholder="Ingresa la foto del producto en formato URL" onkeyup="validarFotoReceta()">
+            <p id="mensajeErrorFoto"></p>
+        </div>
+
+        <div>
+            <button type="submit">Añadir Receta</button>
+        </div>
+    </form>
+    
+</div>
+
+</body>
+
+
+</html>

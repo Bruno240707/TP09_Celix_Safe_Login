@@ -32,6 +32,8 @@
         </div>
     </form>
 
+        <a href='@Url.Action("ViewAñadirProductos","Home", new { IdUsuario = ViewBag.usuario.idUsuario })'>Añadir Productos </a>
+
     <ul>
 
             @for (int i = 0; i < ViewBag.listaProductos.Count; i++)

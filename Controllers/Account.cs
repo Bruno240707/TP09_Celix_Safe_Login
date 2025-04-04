@@ -218,6 +218,28 @@ public class HomeController : Controller
             return View("Recetas");
         }
 
+        public IActionResult ViewAñadirProductos(int IdUsuario)
+        {
+            Usuarios usuarioActivo = BD.verInfoUsuarioActivo(IdUsuario);
+            ViewBag.usuario = usuarioActivo;
+            List<Categoria_Productos> listaCategoriaProductos = BD.ObtenerListaCategoriaProductos();
+            ViewBag.CategoriaProductos = listaCategoriaProductos;
+            return View("AñadirProductos");
+        }
+
+        public IActionResult agregarProducto(Productos producto,int IdUsuario) 
+        {
+            BD.agregarProducto(producto);
+            
+            Usuarios usuarioActivo = BD.verInfoUsuarioActivo(IdUsuario);
+            ViewBag.usuario = usuarioActivo;
+
+            List<Categoria_Productos> listaCategoriaProductos = BD.ObtenerListaCategoriaProductos();
+            List<Productos> listaProductos = BD.ObtenerListaProductos();
+            ViewBag.listaProductos = listaProductos;
+            ViewBag.listaCategoriaProductos = listaCategoriaProductos;
+            return View("Productos");
+        }
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------
         private bool ValidarContraseña(string contraseña)
