@@ -25,11 +25,11 @@
 
 <h1>AÑADIR ESTABLECIMIENTO</h1>
 
-<form action='@Url.Action("agregarEstablecimiento", "Home", new { IdUsuario = ViewBag.usuario.idUsuario })' method="post">
+<form action='@Url.Action("agregarEstablecimiento", "Home", new { IdUsuario = ViewBag.usuario.idUsuario })' method="post" onsubmit="return enviar(event)">
     <div class="form-group">
         <label>Nombre del Establecimiento</label>
-        <input type="text" class="form-control" id="nombreEstablecimiento" name="nombreEstablecimiento" placeholder="Ej: Panadería El Buen Sabor" onkeyup="validarNombreEstablecimiento(event)">
-        <p id="mensajeErrorNombreEstablecimiento"></p>
+        <input type="text" class="form-control" id="nombreEstablecimiento" name="nombreEstablecimiento" placeholder="Ej: Panadería El Buen Sabor" onkeyup="validarNombre(event)">
+        <p id="mensajeErrorNombre"></p>
     </div>
 
     <div class="form-group">
@@ -44,7 +44,7 @@
 
     <div class="form-group">
         <label>Calificación</label>
-        <select class="form-control" id="calificacionEstablecimiento" name="calificacionEstablecimiento">
+        <select class="form-control" id="calificacionEstablecimiento" name="calificacionEstablecimiento" onkeyup="validarCalificacion(event)">
             <option value="">Selecciona una calificación</option>
             <option value="1">1 ⭐ - Muy Mala</option>
             <option value="2">2 ⭐⭐ - Mala</option>
@@ -56,12 +56,14 @@
 
     <div class="form-group">
         <label>Descripción</label>
-        <input type="text" class="form-control" id="descripcionEstablecimiento" name="descripcionEstablecimiento" placeholder="Describe brevemente el establecimiento">
+        <input type="text" class="form-control" id="descripcionEstablecimiento" name="descripcionEstablecimiento" placeholder="Describe brevemente el establecimiento" onkeyup="validarContenido(event)">
+        <p id="mensajeErrorContenido"> </p>
     </div>
-    
+
     <div class="form-group">
         <label>Foto del Establecimiento (URL)</label>
-        <input type="text" class="form-control" id="fotoEstablecimiento" name="fotoEstablecimiento" placeholder="URL de la imagen">
+        <input type="text" class="form-control" id="fotoEstablecimiento" name="fotoEstablecimiento" placeholder="URL de la imagen" onkeyup="validarFoto(event)">
+        <p id="mensajeErrorFoto"> </p>
     </div>
 
     <button type="submit">Agregar Establecimiento</button>

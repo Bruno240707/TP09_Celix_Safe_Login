@@ -33,7 +33,7 @@
     return esValida;
 }
 
-const validarNombreReceta = (e) => {
+const validarNombre = (e) => {
     let mensajeErrorNombre = document.getElementById("mensajeErrorNombre")
     let nombreValido = e.target.value.trim().length > 5
     mensajeErrorNombre.style.color = "Red"
@@ -44,9 +44,11 @@ const validarNombreReceta = (e) => {
     else {
         mensajeErrorNombre.innerHTML = ""
     }
+
+    return nombreValido
 }
 
-const validarContenidoReceta = (e) => {
+const validarContenido = (e) => {
     let mensajeErrorContenido = document.getElementById("mensajeErrorContenido")
     let contenidoValido = e.target.value.trim().length > 20
     mensajeErrorContenido.style.color = "Red"
@@ -57,6 +59,8 @@ const validarContenidoReceta = (e) => {
     else {
         mensajeErrorContenido.innerHTML = ""
     }
+
+    return contenidoValido
 }
 
 const validarCalificacion = (e) => {
@@ -70,9 +74,11 @@ const validarCalificacion = (e) => {
     else {
         mensajeErrorCalificacion.innerHTML = ""
     }
+
+    return calificacionEsValida
 }
 
-const validarFotoReceta = (e) => {
+const validarFoto = (e) => {
     let mensajeErrorFoto = document.getElementById("mensajeErrorFoto")
     let fotoEsValido = e.target.value.trim().length > 10
     mensajeErrorFoto.style.color = "Red"
@@ -83,8 +89,18 @@ const validarFotoReceta = (e) => {
         mensajeErrorFoto.innerHTML = ""
     }
 
+    return fotoEsValido
+
 }
 
+const enviar = () => {
+    const esNombreValido = validarNombre();
+    const esContenidoValido = validarContenido();
+    const esCalificacionValida = validarCalificacion();
+    const esFotoValida = validarFoto();
+
+    return esNombreValido && esContenidoValido && esCalificacionValida && esFotoValida;
+}
 
 
 
