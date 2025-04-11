@@ -32,7 +32,7 @@
 
     return esValida;
 }
-
+////////////
 const validarNombre = (e) => {
     let mensajeErrorNombre = document.getElementById("mensajeErrorNombre")
     let nombreValido = e.target.value.trim().length > 5
@@ -93,13 +93,46 @@ const validarFoto = (e) => {
 
 }
 
-const enviar = () => {
-    const esNombreValido = validarNombre();
-    const esContenidoValido = validarContenido();
-    const esCalificacionValida = validarCalificacion();
-    const esFotoValida = validarFoto();
+const enviarProductos = () => {
+    const nombre = document.getElementById("nombreProducto")
+    const descripcion = document.getElementById("descripcionProducto")
+    const calificacion = document.getElementById("calificacionProducto")
+    const foto = document.getElementById("fotoProducto")
 
-    return esNombreValido && esContenidoValido && esCalificacionValida && esFotoValida;
+    let nombreValido = nombre.value.length > 5
+    let contenidoValido = descripcion.value.length > 20
+    let calificacionEsValida = calificacion.value > 0
+    let fotoEsValido = foto.value.length > 10
+
+    return nombreValido && contenidoValido && calificacionEsValida && fotoEsValido;
+}
+
+const enviarRecetas = () => {
+    const nombre = document.getElementById("nombreReceta")
+    const descripcion = document.getElementById("contenidoReceta")
+    const calificacion = document.getElementById("calificacionReceta")
+    const foto = document.getElementById("fotoReceta")
+
+    let nombreValido = nombre.value.length > 5
+    let contenidoValido = descripcion.value.length > 20
+    let calificacionEsValida = calificacion.value > 0
+    let fotoEsValido = foto.value.length > 10
+
+    return nombreValido && contenidoValido && calificacionEsValida && fotoEsValido;
+}
+
+const enviarEstablecimientos = () => {
+    const nombre = document.getElementById("nombreEstablecimiento")
+    const descripcion = document.getElementById("descripcionEstablecimiento")
+    const calificacion = document.getElementById("calificacionEstablecimiento")
+    const foto = document.getElementById("fotoEstablecimiento")
+
+    let nombreValido = nombre.value.length > 5
+    let contenidoValido = descripcion.value.length > 20
+    let calificacionEsValida = calificacion.value > 0
+    let fotoEsValido = foto.value.length > 10
+
+    return nombreValido && contenidoValido && calificacionEsValida && fotoEsValido;
 }
 
 
