@@ -39,7 +39,7 @@ html {
 }
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  background-color: #beb9b9;
   color: #333;
   margin: 0;
   padding: 0;
@@ -50,7 +50,7 @@ body {
 }
 
 .post {
-  background-color: white;
+  background-color: rgb(253, 223, 178);
   padding: 15px;
   margin-bottom: 20px;
   border-radius: 8px;
@@ -66,7 +66,7 @@ h2 {
 }
 
 .comentario {
-  background-color: #f9f9f9;
+  background-color: rgb(187, 146, 86);
   padding: 10px;
   margin: 10px 0;
   border-radius: 5px;
@@ -82,7 +82,7 @@ textarea {
 }
 
 button {
-  background-color: #4CAF50;
+  background-color: #f3be12;
   color: white;
   padding: 10px 15px;
   border: none;

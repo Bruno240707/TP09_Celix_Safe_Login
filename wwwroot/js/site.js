@@ -167,7 +167,7 @@ const agregarComentario = (button) => {
         nuevoComentario.classList.add('comentario');
         
        
-        nuevoComentario.innerHTML = `<p><strong>Nuevo Usuario</strong> ${comentarioTexto}</p>`;
+        nuevoComentario.innerHTML = `<p><strong>${usuarioActivo}</strong> ${comentarioTexto}</p>`;
         
        
         post.querySelector('.comentarios').appendChild(nuevoComentario);
