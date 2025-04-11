@@ -25,7 +25,7 @@
 
 <h1>AÑADIR ESTABLECIMIENTO</h1>
 
-<form action='@Url.Action("agregarEstablecimiento", "Home", new { IdUsuario = ViewBag.usuario.idUsuario })' method="post" onsubmit="return enviar(event)">
+<form action='@Url.Action("agregarEstablecimiento", "Home", new { IdUsuario = ViewBag.usuario.idUsuario })' method="post" onsubmit="return enviarEstablecimientos()">
     <div class="form-group">
         <label>Nombre del Establecimiento</label>
         <input type="text" class="form-control" id="nombreEstablecimiento" name="nombreEstablecimiento" placeholder="Ej: Panadería El Buen Sabor" onkeyup="validarNombre(event)">

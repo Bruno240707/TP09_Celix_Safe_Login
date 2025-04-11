@@ -26,7 +26,7 @@
 <div class="AñadirRecetas">
     <h1>AÑADIR PRODUCTO</h1>
 
-    <form action='@Url.Action("agregarProducto", "Home", new { IdUsuario = ViewBag.usuario.idUsuario })' method="post" id="registroForm">
+    <form action='@Url.Action("agregarProducto", "Home", new { IdUsuario = ViewBag.usuario.idUsuario })' method="post" id="registroForm" onsubmit="enviarProductos()">
         <div class="form-group">
             <label for="nombreReceta">Nombre Producto</label>
             <input type="text" class="form-control" id="nombreProducto" name="nombreProducto" placeholder="Ingresa el nombre del producto" onkeyup="validarNombre(event)">
