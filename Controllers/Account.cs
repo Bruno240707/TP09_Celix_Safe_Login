@@ -241,6 +241,34 @@ public class HomeController : Controller
             return View("Productos");
         }
 
+        public IActionResult ViewAñadirEstablecimientos(int IdUsuario)
+        {
+            Usuarios usuarioActivo = BD.verInfoUsuarioActivo(IdUsuario);
+            ViewBag.usuario = usuarioActivo;
+            
+            List<Ubicacion_Establecimiento> listaUbicaciones = BD.ObtenerListaUbicaciones();
+
+            ViewBag.listaUbicaciones = listaUbicaciones;
+
+            return View("AñadirEstablecimientos");
+        }
+
+        public IActionResult agregarEstablecimiento(Establecimientos establecimiento, int IdUsuario)
+        {
+            BD.agregarEstablecimiento(establecimiento);
+
+            Usuarios usuarioActivo = BD.verInfoUsuarioActivo(IdUsuario);
+            ViewBag.usuario = usuarioActivo;
+
+            List<Ubicacion_Establecimiento> listaUbicaciones = BD.ObtenerListaUbicaciones();
+            List<Establecimientos> listaEstablecimientos = BD.ObtenerListaEstablecimientos();
+
+            ViewBag.listaUbicaciones = listaUbicaciones;
+            ViewBag.listaEstablecimientos = listaEstablecimientos;
+
+            return View("Establecimientos");
+        }
+
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------
         private bool ValidarContraseña(string contraseña)
         {

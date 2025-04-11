@@ -33,24 +33,22 @@
     return esValida;
 }
 
-const validarNombreReceta = () => {
-    const nombreReceta = document.getElementById("nombreReceta").value
+const validarNombreReceta = (e) => {
     let mensajeErrorNombre = document.getElementById("mensajeErrorNombre")
-    let nombreValido = nombreReceta.length > 5
+    let nombreValido = e.target.value.trim().length > 5
     mensajeErrorNombre.style.color = "Red"
 
     if(!nombreValido) {
-        mensajeErrorNombre.innerHTML = "El nombre de la receta debe tener almenos 5 caracteres"
+        mensajeErrorNombre.innerHTML = "El nombre debe tener almenos 5 caracteres"
     }
     else {
         mensajeErrorNombre.innerHTML = ""
     }
 }
 
-const validarContenidoReceta = () => {
-    const contenidoReceta = document.getElementById("contenidoReceta").value
+const validarContenidoReceta = (e) => {
     let mensajeErrorContenido = document.getElementById("mensajeErrorContenido")
-    let contenidoValido = contenidoReceta.length > 20
+    let contenidoValido = e.target.value.trim().length > 20
     mensajeErrorContenido.style.color = "Red"
 
     if(!contenidoValido) {
@@ -61,10 +59,9 @@ const validarContenidoReceta = () => {
     }
 }
 
-const validarCalificacion = () => {
-    const calificacionReceta = document.getElementById("calificacionReceta").value
+const validarCalificacion = (e) => {
     let mensajeErrorCalificacion = document.getElementById("mensajeErrorCalificacion")
-    let calificacionEsValida = calificacionReceta > 0
+    let calificacionEsValida = e.target.value > 0
     mensajeErrorCalificacion.style.color = "Red"
 
     if (!calificacionEsValida) {
@@ -75,42 +72,17 @@ const validarCalificacion = () => {
     }
 }
 
-const validarFotoReceta = () => {
-    const fotoReceta = document.getElementById("fotoReceta").value
+const validarFotoReceta = (e) => {
     let mensajeErrorFoto = document.getElementById("mensajeErrorFoto")
-    let fotoEsValido = fotoReceta.length > 10
+    let fotoEsValido = e.target.value.trim().length > 10
     mensajeErrorFoto.style.color = "Red"
 
     if(!fotoEsValido){
         mensajeErrorFoto.innerHTML = "El formato es invalido"
     } else {
         mensajeErrorFoto.innerHTML = ""
-
     }
 
-}
-
-const validarAñadirReceta = () => {
-    let todoValido = false
-    const calificacionReceta = document.getElementById("calificacionReceta").value
-    const nombreReceta = document.getElementById("nombreReceta").value
-    const contenidoReceta = document.getElementById("contenidoReceta").value
-    const fotoReceta = document.getElementById("fotoReceta").value
-
-    let fotoEsValido = fotoReceta.length > 10
-    let nombreValido = nombreReceta.length > 5
-    let contenidoValido = contenidoReceta.length > 20
-    let calificacionEsValida = calificacionReceta > 0
-
-    if(calificacionEsValida && contenidoValido && nombreValido && fotoEsValido)
-    {
-        todoValido = true
-    }
-    else {
-        todoValido = false
-    }
-
-    return todoValido
 }
 
 

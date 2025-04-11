@@ -26,28 +26,39 @@
 <div class="AñadirRecetas">
     <h1>AÑADIR PRODUCTO</h1>
 
-    <form action='@Url.Action("AnadirProductos", "Home", new { IdUsuario = ViewBag.usuario.idUsuario })' method="post" id="registroForm" onsubmit="return validarAñadirReceta()">
+    <form action='@Url.Action("agregarProducto", "Home", new { IdUsuario = ViewBag.usuario.idUsuario })' method="post" id="registroForm">
         <div class="form-group">
             <label for="nombreReceta">Nombre Producto</label>
-            <input type="text" class="form-control" id="nombreProducto" name="nombreProducto" placeholder="Ingresa el nombre del producto" onkeyup="validarNombreReceta()">
+            <input type="text" class="form-control" id="nombreProducto" name="nombreProducto" placeholder="Ingresa el nombre del producto" onkeyup="validarNombreReceta(event)">
             <p id="mensajeErrorNombre"></p>
         </div>
 
         <div class="form-group">
             <label for="contenidoReceta">Precio Producto</label>
-            <input type="text" class="form-control" id="precioProducto" name="contenidoReceta" placeholder="Ingresa el precio del producto">
+            <input type="text" class="form-control" id="precioProducto" name="precioProducto" placeholder="Ingresa el precio del producto">
             <p id="mensajeErrorContenido"></p>
         </div>
 
         <div class="form-group">
-            <label for="contenidoReceta">Descripcion Producto</label>
-            <input type="text" class="form-control" id="descripcionProducto" name="descripcionProducto" placeholder="Ingresa la descripcion del producto" onkeyup="validarContenidoReceta()">
-            <p id="mensajeErrorContenido"></p>
+            <label for="categoriaReceta">Categoría del Producto</label>
+            <select class="form-control" id="idCategoriaProducto" name="idCategoriaProducto">
+                @foreach (Categoria_Productos categoria in ViewBag.CategoriaProductos)
+                {
+                    <option value="@categoria.idCategoriaProducto">@categoria.nombreCategoriaProducto</option>
+                }
+            </select>
+            <p id="mensajeErrorCategoria"></p>
+        </div>
+
+        <div class="form-group">
+            <label for="fotoReceta">Stock producto</label>
+            <input type="text" class="form-control" id="stock" name="stock" placeholder="Ingresa el stock del producto">
+            <p id="mensajeErrorFoto"></p>
         </div>
 
         <div class="form-group">
             <label for="calificacionReceta">Calificación del producto</label>
-            <select class="form-control" id="calificacionProducto" name="calificacionProducto" onchange="validarCalificacion()">
+            <select class="form-control" id="calificacionProducto" name="calificacionProducto" onchange="validarCalificacion(event)">
                 <option value="">Selecciona una calificación</option>
                 <option value="1">1 ⭐ - Muy Mala</option>
                 <option value="2">2 ⭐⭐ - Mala</option>
@@ -59,30 +70,19 @@
         </div>
 
         <div class="form-group">
-            <label for="categoriaReceta">Categoría del Producto</label>
-            <select class="form-control" id="idCategoriaReceta" name="idCategoriaReceta">
-                @foreach (Categoria_Productos categoria in ViewBag.CategoriaProductos)
-                {
-                    <option value="@categoria.idCategoriaProducto">@categoria.nombreCategoriaProducto</option>
-                }
-            </select>
-            <p id="mensajeErrorCategoria"></p>
-        </div>
-
-        <div class="form-group">
-            <label for="fotoReceta">Stock producto</label>
-            <input type="text" class="form-control" id="stockProducto" name="stockProducto" placeholder="Ingresa el stock del producto">
-            <p id="mensajeErrorFoto"></p>
-        </div>
-
-        <div class="form-group">
             <label for="fotoReceta">Foto Producto</label>
-            <input type="text" class="form-control" id="fotoProducto" name="fotoProducto" placeholder="Ingresa la foto del producto en formato URL" onkeyup="validarFotoReceta()">
+            <input type="text" class="form-control" id="fotoProducto" name="fotoProducto" placeholder="Ingresa la foto del producto en formato URL" onkeyup="validarFotoReceta(event)">
             <p id="mensajeErrorFoto"></p>
+        </div>
+
+        <div class="form-group">
+            <label for="contenidoReceta">Descripcion Producto</label>
+            <input type="text" class="form-control" id="descripcionProducto" name="descripcionProducto" placeholder="Ingresa la descripcion del producto" onkeyup="validarContenidoReceta(event)">
+            <p id="mensajeErrorContenido"></p>
         </div>
 
         <div>
-            <button type="submit">Añadir Receta</button>
+            <button type="submit">Añadir Producto</button>
         </div>
     </form>
     
