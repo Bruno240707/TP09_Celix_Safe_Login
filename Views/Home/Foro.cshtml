@@ -25,14 +25,33 @@
     
     <main>
         <section id="foro">
-            <div id="posts"></div> 
-            
-            <div id="nuevoPost">
-                <h3>Agregar un nuevo tema de discusión:</h3>
-                <textarea id="tituloPost" placeholder="Escribe el título del tema..." rows="2"></textarea>
-                <textarea id="contenidoPost" placeholder="Escribe el contenido del tema..." rows="4"></textarea>
-                <button onclick="AgregarPost()">Agregar Post</button>
+            <div id="posts">
+                @if (ViewBag.posts != null)
+                {
+                    foreach (Post p in ViewBag.posts)
+                    {
+                        <div class="post">
+                            <h2>@p.tituloPost</h2>
+                            <p>@p.contenidoPost</p>
+                            <div class="comentarios"></div>
+                            <textarea placeholder="Escribe tu comentario..." rows="3"></textarea>
+                            <button onclick="agregarComentario(this)">Enviar Comentario</button>
+                        </div>
+                    }
+                }
             </div>
+
+            <form action='@Url.Action("Foro", "Home", new { IdUsuario = ViewBag.usuario.idUsuario })' method="post" id="ForoForm">
+                <div id="nuevoPost">
+                    <h3>Agregar un nuevo tema de discusión:</h3>
+                    <textarea id="tituloPost" name="tituloPost" placeholder="Escribe el título del tema..." rows="2"></textarea>
+                    <textarea id="contenidoPost" name="contenidoPost" placeholder="Escribe el contenido del tema..." rows="4"></textarea>
+                    <button type="submit">Agregar Post</button>
+                   
+
+                </div>
+                    
+            </form>
         </section>
     </main>
     

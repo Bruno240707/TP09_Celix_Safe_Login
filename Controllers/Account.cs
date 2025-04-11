@@ -57,13 +57,7 @@ public class HomeController : Controller
             return View();
         }
 
-        public IActionResult Foro(Post post, int IdUsuario)
-        {
-            BD.agregarPost(post);
-            Usuarios usuarioActivo = BD.verInfoUsuarioActivo(IdUsuario);
-            ViewBag.usuario = usuarioActivo;
-            return View();
-        }
+        
         public IActionResult Registro(Usuarios user, string confirmarContra)
         {
             if (user.username == null || user.contraseña == null || confirmarContra == null)
@@ -203,6 +197,38 @@ public class HomeController : Controller
             ViewBag.CategoriaRecetas = listaCategoriaRecetas;
             return View("AñadirRecetas");
         }
+
+[HttpGet]
+        public IActionResult Foro(int IdUsuario)
+        {
+            Usuarios usuarioActivo = BD.verInfoUsuarioActivo(IdUsuario);
+            ViewBag.usuario = usuarioActivo;
+
+            List<Post> posts = BD.obtenerPosts();
+            ViewBag.posts = posts;
+
+            return View();
+        }
+    
+[HttpPost]
+
+        public IActionResult Foro(Post post, int IdUsuario)
+        {
+            BD.agregarPost(post); // guarda el nuevo post en la base
+
+            Usuarios usuarioActivo = BD.verInfoUsuarioActivo(IdUsuario);
+            ViewBag.usuario = usuarioActivo;
+
+            // ⚠️ NUEVO: traemos los posts y los mandamos a la vista
+            List<Post> posts = BD.obtenerPosts();
+            ViewBag.posts = posts;
+
+            return View();
+        }
+
+
+        
+
 
         public IActionResult AnadirRecetas(Recetas receta,int IdUsuario) 
         {

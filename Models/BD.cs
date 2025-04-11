@@ -69,13 +69,24 @@ public class BD
 
     public static void agregarPost(Post post)
     {
-        
+        string sql = "INSERT INTO Foro(tituloPost, contenidoPost) VALUES (@tituloPost, @contenidoPost)";   
         using(SqlConnection conn = new SqlConnection(_ConnectionString)) 
         {
-            string sql = "INSERT INTO Foro(tituloPost, contenidoPost) VALUES (@tituloPost, @contenidoPost)";
+            
             conn.Execute(sql, new {tituloPost = post.tituloPost, contenidoPost = post.contenidoPost});
         }
     }
+
+    public static List<Post> obtenerPosts()
+    {
+        string sql = "SELECT * FROM Foro ORDER BY idPost DESC";
+        using(SqlConnection conn = new SqlConnection(_ConnectionString))
+        {
+            return conn.Query<Post>(sql).ToList();
+        }
+    }
+
+
 
     public static void cambiarContra(string email, string nuevaContraseña, string nombrePerro)
     {
