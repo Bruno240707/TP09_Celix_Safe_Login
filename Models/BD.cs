@@ -33,6 +33,16 @@ public class BD
         }
         return listaUsuarios;
     }
+    
+    public static List<Ubicacion_Establecimiento> ObtenerListaUbicaciones()
+    {
+        List<Ubicacion_Establecimiento> listaUbicaciones = new List<Ubicacion_Establecimiento>();
+        using(SqlConnection conn = new SqlConnection(_ConnectionString)){
+            string sql="SELECT * FROM Ubicacion_Establecimiento";
+            listaUbicaciones = conn.Query<Ubicacion_Establecimiento>(sql).ToList();
+        }
+        return listaUbicaciones;
+    }
 
     public static bool existeUsuarioRegistro(string email) 
     {
@@ -61,12 +71,26 @@ public class BD
     }
     public static void agregarProducto(Productos producto)
     {
-        string sql = "INSERT INTO Recetas(nombreProducto, precioProducto, idCategoriaProducto, stock, calificacionProducto, fotoProducto, descripcionProducto) VALUES (@nombreProducto, @precioProducto, @idCategoriaProducto, @stock, @calificacionProducto, @fotoProducto, @descripcionProducto)";
+        string sql = "INSERT INTO Productos(nombreProducto, precioProducto, idCategoriaProducto, stock, calificacionProducto, fotoProducto, descripcionProducto) VALUES (@nombreProducto, @precioProducto, @idCategoriaProducto, @stock, @calificacionProducto, @fotoProducto, @descripcionProducto)";
         using(SqlConnection conn = new SqlConnection(_ConnectionString)) {
             conn.Execute(sql, new {nombreProducto = producto.nombreProducto, precioProducto = producto.precioProducto, idCategoriaProducto = producto.idCategoriaProducto, stock = producto.stock ,calificacionProducto = producto.calificacionProducto, fotoProducto = producto.fotoProducto, descripcionProducto = producto.descripcionProducto});
         }
     }
-
+    public static void agregarEstablecimiento(Establecimientos establecimiento)
+    {
+        string sql = "INSERT INTO Establecimientos(nombreEstablecimiento, idUbicacionEstablecimiento, calificacionEstablecimiento, descripcionEstablecimiento, fotoEstablecimiento) VALUES (@nombreEstablecimiento, @idUbicacionEstablecimiento, @calificacionEstablecimiento, @descripcionEstablecimiento, @fotoEstablecimiento)";
+    
+        using (SqlConnection conn = new SqlConnection(_ConnectionString))
+        {
+            conn.Execute(sql, new {
+                nombreEstablecimiento = establecimiento.nombreEstablecimiento,
+                idUbicacionEstablecimiento = establecimiento.idUbicacionEstablecimiento,
+                calificacionEstablecimiento = establecimiento.calificacionEstablecimiento,
+                descripcionEstablecimiento = establecimiento.descripcionEstablecimiento,
+                fotoEstablecimiento = establecimiento.fotoEstablecimiento
+            });
+        }
+    }
     public static void agregarPost(Post post)
     {
         string sql = "INSERT INTO Foro(tituloPost, contenidoPost) VALUES (@tituloPost, @contenidoPost)";   
