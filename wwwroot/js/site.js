@@ -186,40 +186,6 @@ const AgregarPost = () => {
     }
 };
 
-const agregarComentario = (button) => {
- 
-    const post = button.closest('.post');
-
-    const comentarioTextarea = post.querySelector('textarea');
-    const comentarioTexto = comentarioTextarea.value.trim();
-    
-
-    if (comentarioTexto) {
-  
-        const nuevoComentario = document.createElement('div');
-        nuevoComentario.classList.add('comentario');
-        
-       
-        nuevoComentario.innerHTML = `<p><strong>${usuarioActivo}</strong> ${comentarioTexto}</p>`;
-        
-       
-        post.querySelector('.comentarios').appendChild(nuevoComentario);
-        
-   
-        const contador = post.querySelector('.contadorComentarios');
-        const numComentarios = post.querySelectorAll('.comentario').length;
-        contador.textContent = numComentarios;
-
-       
-        comentarioTextarea.value = '';
-    
-    
-    } else {
- 
-        alert('Por favor, escribe un comentario antes de enviarlo.');
-    }
-  
-};
 
 
 

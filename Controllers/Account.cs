@@ -226,6 +226,25 @@ public class HomeController : Controller
             return View();
         }
 
+[HttpPost]
+        public IActionResult AgregarComentario(int idPost, string texto, int IdUsuario)
+        {
+            Console.WriteLine("LLEGÓ comentario: " + texto + " / para post: " + idPost + " / de usuario: " + IdUsuario);
+
+            if (!string.IsNullOrWhiteSpace(texto))
+            {
+                Comentario c = new Comentario
+                {
+                    texto = texto,
+                    idPost = idPost
+                };
+                BD.agregarComentario(c);
+            }
+
+            return RedirectToAction("Foro", "Home", new { IdUsuario = IdUsuario });
+        }
+
+
 
         
 

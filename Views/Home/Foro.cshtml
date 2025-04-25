@@ -31,11 +31,25 @@
                     foreach (Post p in ViewBag.posts)
                     {
                         <div class="post">
-                            <h2>@p.tituloPost</h2>
-                            <p>@p.contenidoPost</p>
-                            <div class="comentarios"></div>
-                            <textarea placeholder="Escribe tu comentario..." rows="3"></textarea>
-                            <button onclick="agregarComentario(this)">Enviar Comentario</button>
+                                <h2>@p.tituloPost</h2>
+                                <p>@p.contenidoPost</p>
+                                <div class="comentarios">
+                                    @if (p.comentarios != null && p.comentarios.Count > 0)
+                                    {
+                                        foreach (var c in p.comentarios)
+                                        {
+                                            <div class="comentario">
+                                                <p><strong>Comentario:</strong> @c.texto</p>
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                                <form action='@Url.Action("AgregarComentario", "Home")' method="post">
+                                    <input type="hidden" name="idPost" value="@p.idPost" />
+                                    <input type="hidden" name="IdUsuario" value="@ViewBag.usuario.idUsuario" />
+                                    <textarea name="texto" placeholder="Escribe tu comentario..." rows="3"></textarea>
+                                    <button type="submit">Enviar Comentario</button>
+                                </form>
                         </div>
                     }
                 }

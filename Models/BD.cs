@@ -103,15 +103,41 @@ public class BD
 
     public static List<Post> obtenerPosts()
     {
-        string sql = "SELECT * FROM Foro ORDER BY idPost DESC";
-        using(SqlConnection conn = new SqlConnection(_ConnectionString))
+        string sqlPosts = "SELECT * FROM Foro ORDER BY idPost DESC";
+        string sqlComentarios = "SELECT * FROM Comentario WHERE idPost = @idPost ORDER BY idComentario ASC";
+
+        using (SqlConnection conn = new SqlConnection(_ConnectionString))
         {
-            return conn.Query<Post>(sql).ToList();
+            List<Post> posts = conn.Query<Post>(sqlPosts).ToList();
+
+            foreach (Post p in posts)
+            {
+                p.comentarios = conn.Query<Comentario>(sqlComentarios, new { idPost = p.idPost }).ToList();
+            }
+
+            return posts;
+        }
+    }
+
+    public static void agregarComentario(Comentario comentario)
+    {
+        string sql = "INSERT INTO Comentario(texto, idPost) VALUES (@texto, @idPost)";   
+        using(SqlConnection conn = new SqlConnection(_ConnectionString)) 
+        {
+            conn.Execute(sql, new { texto = comentario.texto, idPost = comentario.idPost });
         }
     }
 
 
-
+    public static List<Comentario> obtenerComentarios()
+    {
+        string sql = "SELECT * FROM Comentario ORDER BY idComentario DESC";
+        using(SqlConnection conn = new SqlConnection(_ConnectionString))
+        {
+            return conn.Query<Comentario>(sql).ToList();
+        }
+    }
+    
     public static void cambiarContra(string email, string nuevaContraseña, string nombrePerro)
     {
         using (SqlConnection conn = new SqlConnection(_ConnectionString))
