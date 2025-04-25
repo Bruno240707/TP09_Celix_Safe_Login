@@ -23,33 +23,34 @@
         </div>
 </header>
 
-<div class="busquedas">
-    <form action='@Url.Action("busquedaRecetas", "Home", new { IdUsuario = ViewBag.usuario.idUsuario })' method="Post">
-        <div class="form-group">
-            
-            <input type="text" class="form-control" placeholder="Buscar recetas" id="busqueda" name="busqueda">
-        </div>
+<div class="contenedor-principal">
+    <form action='@Url.Action("busquedaRecetas", "Home", new { IdUsuario = ViewBag.usuario.idUsuario })' method="Post" class="form-busqueda">
+        <input type="text" class="form-control" placeholder="Buscar recetas" id="busqueda" name="busqueda" />
+        <a class="link-añadir" href='@Url.Action("ViewAñadirRecetas","Home", new { IdUsuario = ViewBag.usuario.idUsuario })'>
+            Añadir Recetas
+        </a>
     </form>
-
-        <a href='@Url.Action("ViewAñadirRecetas","Home", new { IdUsuario = ViewBag.usuario.idUsuario })'>Añadir Recetas </a>
-
-
-    <ul>
-
+    
+<ul class="lista-productos">
+    @if (ViewBag.listaRecetas != null && ViewBag.listaRecetas.Count > 0)
+    {
             @foreach (Recetas item in ViewBag.listaRecetas)
             {
-                <li>
+                <li class="tarjeta-producto">
                     <img src="@item.fotoReceta" alt="@item.nombreReceta" />
-                    <strong>Nombre receta:</strong> @item.nombreReceta <br />
-                    <strong>Contenido:</strong> @item.contenidoReceta <br />
-                    <strong>Categoría:</strong> @ViewBag.listaCategoriaRecetas[@item.idCategoriaReceta - 1].nombreCategoriaReceta <br />
-                    <strong>Calificación:</strong> @item.calificacionReceta <br />
+                    <p><strong>Nombre receta:</strong> @item.nombreReceta</p>
+                    <p><strong>Contenido:</strong> @item.contenidoReceta</p>
+                    <p><strong>Categoría:</strong> @ViewBag.listaCategoriaRecetas[@item.idCategoriaReceta - 1].nombreCategoriaReceta</p>
+                    <p><strong>Calificación:</strong> @item.calificacionReceta</p>
                     <a href="#" class="boton-ver">Ver</a>
                 </li>
             }
-
-    </ul>
+    }
+</ul>
 </div>
+
+
+
 
 </body>
 

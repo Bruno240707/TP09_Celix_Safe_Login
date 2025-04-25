@@ -22,19 +22,17 @@
         </div>
 </header>
 
-<div class="busquedas">
-    <form action='@Url.Action("busquedaEstablecimientos", "Home", new { IdUsuario = ViewBag.usuario.idUsuario })' method="Post">
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Buscar establecimientos" id="busqueda" name="busqueda">
-        </div>
+<div class="contenedor-principal">
+    <form action='@Url.Action("busquedaEstablecimientos", "Home", new { IdUsuario = ViewBag.usuario.idUsuario })' method="Post" class="form-busqueda">
+        <input type="text" class="form-control" placeholder="Buscar establecimientos" id="busqueda" name="busqueda">
     </form>
 
-    <ul>
+    <ul class="lista-productos">
         @if (ViewBag.listaEstablecimientosBuscados != null && ViewBag.listaEstablecimientosBuscados.Count > 0)
         {
             @for (int i = 0; i < ViewBag.listaEstablecimientosBuscados.Count; i++)
             {
-                <li>
+                <li class="tarjeta-producto">
                     <img src="@ViewBag.listaEstablecimientosBuscados[i].fotoEstablecimiento" alt="@ViewBag.listaEstablecimientosBuscados[i].nombreEstablecimiento" />
                     <strong>Nombre:</strong> @ViewBag.listaEstablecimientosBuscados[i].nombreEstablecimiento <br />
                     <strong>Calificacion:</strong> @ViewBag.listaEstablecimientosBuscados[i].calificacionEstablecimiento <br />

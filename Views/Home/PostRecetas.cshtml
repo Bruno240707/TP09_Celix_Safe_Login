@@ -22,34 +22,33 @@
         </div>
 </header>
 
-<div class="busquedas">
-    <form action='@Url.Action("busquedaRecetas", "Home", new { IdUsuario = ViewBag.usuario.idUsuario })' method="Post">
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Buscar recetas" id="busqueda" name="busqueda">
-        </div>
+<div class="contenedor-principal">
+    <form action='@Url.Action("busquedaRecetas", "Home", new { IdUsuario = ViewBag.usuario.idUsuario })' method="Post" class="form-busqueda">
+        <input type="text" class="form-control" placeholder="Buscar recetas" id="busqueda" name="busqueda" />
     </form>
 
-    <ul>
+    <ul class="lista-productos">
         @if (ViewBag.listaRecetasBuscados != null && ViewBag.listaRecetasBuscados.Count > 0)
         {
             for (int i = 0; i < ViewBag.listaRecetasBuscados.Count; i++)
             {
-                <li>
+                <li class="tarjeta-producto">
                     <img src="@ViewBag.listaRecetasBuscados[i].fotoReceta" alt="@ViewBag.listaRecetasBuscados[i].nombreReceta" />
-                    <strong>Nombre receta:</strong> @ViewBag.listaRecetasBuscados[i].nombreReceta <br />
-                    <strong>Contenido:</strong> @ViewBag.listaRecetasBuscados[i].contenidoReceta <br />
-                    <strong>Categoría:</strong> @ViewBag.listaCategoriaRecetas[@ViewBag.listaRecetasBuscados[i].idCategoriaReceta - 1].nombreCategoriaReceta <br />
-                    <strong>Calificación:</strong> @ViewBag.listaRecetasBuscados[i].calificacionReceta <br />
-                    <button class="btn btn-primary" onclick="mostrarReceta(@ViewBag.listaRecetasBuscados[i].idReceta)">Acercar</button>
+                    <p><strong>Nombre receta:</strong> @ViewBag.listaRecetasBuscados[i].nombreReceta</p>
+                    <p><strong>Contenido:</strong> @ViewBag.listaRecetasBuscados[i].contenidoReceta</p>
+                    <p><strong>Categoría:</strong> @ViewBag.listaCategoriaRecetas[@ViewBag.listaRecetasBuscados[i].idCategoriaReceta - 1].nombreCategoriaReceta</p>
+                    <p><strong>Calificación:</strong> @ViewBag.listaRecetasBuscados[i].calificacionReceta</p>
+                    <button class="btn btn-warning" onclick="mostrarReceta(@ViewBag.listaRecetasBuscados[i].idReceta)">Acercar</button>
                 </li>
             }
         }
         else
         {
-            <p>No se encontraron recetas.</p>
+            <p style="padding: 20px;">No se encontraron recetas.</p>
         }
     </ul>
 </div>
+
 
 
 <div id="modal" class="modal">
