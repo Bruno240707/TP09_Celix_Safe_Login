@@ -22,33 +22,31 @@
 </header>
 
 
-<div class="busquedas">
-    <form action='@Url.Action("busquedaProducto", "Home", new { IdUsuario = ViewBag.usuario.idUsuario })' method="Post">
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Buscar productos" id="busqueda" name="busqueda">
-        </div>
+<div class="contenedor-principal">
+    <form action='@Url.Action("busquedaProducto", "Home", new { IdUsuario = ViewBag.usuario.idUsuario })' method="Post" class="form-busqueda">
+        <input type="text" class="form-control" placeholder="Buscar productos" id="busqueda" name="busqueda" />
     </form>
 
-    <ul>
-        @if (ViewBag.listaProductosBuscados != null && ViewBag.listaProductosBuscados.Count > 0)
-        {
-            for (int i = 0; i < ViewBag.listaProductosBuscados.Count; i++)
+    @if (ViewBag.listaProductosBuscados != null && ViewBag.listaProductosBuscados.Count > 0)
+    {
+        <ul class="lista-productos">
+            @for (int i = 0; i < ViewBag.listaProductosBuscados.Count; i++)
             {
-                <li>
+                <li class="tarjeta-producto">
                     <img src="@ViewBag.listaProductosBuscados[i].fotoProducto" alt="@ViewBag.listaProductosBuscados[i].nombreProducto" />
-                    <strong>Producto:</strong> @ViewBag.listaProductosBuscados[i].nombreProducto <br />
-                    <strong>Precio:</strong> $@ViewBag.listaProductosBuscados[i].precioProducto <br />
-                    <strong>Categoría:</strong> @ViewBag.listaCategoriaProductos[@ViewBag.listaProductosBuscados[i].idCategoriaProducto - 1].nombreCategoriaProducto <br />
-                    <strong>Descripción:</strong> @ViewBag.listaProductosBuscados[i].descripcionProducto <br />
+                    <p><strong>Producto:</strong> @ViewBag.listaProductosBuscados[i].nombreProducto</p>
+                    <p><strong>Precio:</strong> $@ViewBag.listaProductosBuscados[i].precioProducto</p>
+                    <p><strong>Categoría:</strong> @ViewBag.listaCategoriaProductos[@ViewBag.listaProductosBuscados[i].idCategoriaProducto - 1].nombreCategoriaProducto</p>
+                    <p><strong>Descripción:</strong> @ViewBag.listaProductosBuscados[i].descripcionProducto</p>
                     <a href="#" class="boton-ver">Ver</a>
                 </li>
             }
-        }
-        else
-        {
-            <p>No se encontraron productos.</p>
-        }
-    </ul>
+        </ul>
+    }
+    else
+    {
+        <p style="margin-top: 20px; text-align: center; font-size: 18px;">No se encontraron productos.</p>
+    }
 </div>
 
 </body>
